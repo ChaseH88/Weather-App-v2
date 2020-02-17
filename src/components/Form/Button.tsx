@@ -1,5 +1,5 @@
 import React, { FC, useState, useContext} from "react";
-import { AppState } from "state";
+import { State } from "state";
 import { UPDATE_LOCATION } from "state/types";
 import { getLocation } from "utilities/get-location";
 
@@ -10,7 +10,7 @@ interface Location {
 
 const Button: FC = (): JSX.Element => {
 
-  const [, dispatch] = useContext(AppState);
+  const [, dispatch] = useContext(State);
   const [loading, setLoading] = useState<Boolean>(false);
 
   // Handle the click

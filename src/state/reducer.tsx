@@ -6,12 +6,12 @@ export const initialState = {
 
 export const reducer = (state: Object, { type, payload }: any) => {
   switch (type) {
-      case types.UPDATE_LOCATION:
-          return {
-              ...state,
-              location: { ...payload }
-          }
+    case types.UPDATE_LOCATION:
+      return {
+        ...state,
+        location: { ...payload }
+      }
       default:
-          return state;
+        return state;
   }
 }

@@ -1,12 +1,12 @@
 import React, { FC, useReducer } from "react";
 import { reducer, initialState } from "./reducer";  
 
-export const AppState = React.createContext<Array<any>>([]);
+export const State = React.createContext<Array<any>>([]);
 
-const State: FC = ({ children }: any) => (
-  <AppState.Provider value={useReducer(reducer, initialState)}>
+const AppState: FC = ({ children }: any) => (
+  <State.Provider value={useReducer(reducer, initialState)}>
     {children}
-  </AppState.Provider>
+  </State.Provider>
 );
 
-export default State;
+export default AppState;

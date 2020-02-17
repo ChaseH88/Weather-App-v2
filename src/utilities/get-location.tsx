@@ -1,9 +1,7 @@
-export const getLocation: Function = (): any => {
-  return new Promise((resolve, reject) => {
+export const getLocation: Function = (): any => (
+  new Promise((resolve, reject) => {
     
     const geo: any = navigator.geolocation;
-
-    let coordinates: object | null = null;
 
     const showLocation = async ({ coords }: any) => {
       resolve({
@@ -18,7 +16,5 @@ export const getLocation: Function = (): any => {
       maximumAge: 0
     });
 
-    return coordinates;
-
-  }); 
-}
+  }
+));

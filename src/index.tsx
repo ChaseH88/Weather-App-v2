@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
-import State from "state";
+import AppState from "state";
 import Form from "./components/Form";
 
 const App: FC = () => (
-  <State>
+  <AppState>
     <Form />
-  </State>
+  </AppState>
 );
 
 const root = document.querySelector("#app");
