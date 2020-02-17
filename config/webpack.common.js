@@ -59,7 +59,7 @@ module.exports = {
       'classes': resolve(__dirname, '../src/classes'),
       'components': resolve(__dirname, '../src/components'),
       'hooks': resolve(__dirname, '../src/hooks'),
-      'state': resolve(__dirname, '../state'),
+      'state': resolve(__dirname, '../src/state'),
       'utilities': resolve(__dirname, '../src/utilities'),
     }
   },

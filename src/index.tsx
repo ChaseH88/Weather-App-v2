@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
-import State from "./state";
+import State from "state";
 import Form from "./components/Form";
 
 const App: FC = () => (

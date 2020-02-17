@@ -1,0 +1,1 @@
+export const UPDATE_LOCATION: string = '@location/update';
