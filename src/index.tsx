@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 import ReactDOM from "react-dom";
 import AppState from "state";
-import Form from "./components/Form";
+import Layout from "./components/Layout";
+import 'semantic-ui-css/semantic.min.css';
 
 const App: FC = () => (
   <AppState>
-    <Form />
+    <Layout />
   </AppState>
 );
 

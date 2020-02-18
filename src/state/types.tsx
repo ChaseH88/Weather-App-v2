@@ -1,1 +1,1 @@
-export const UPDATE_LOCATION: string = '@location/update';
+export const UPDATE_COORDINATES: string = '@location/update';
