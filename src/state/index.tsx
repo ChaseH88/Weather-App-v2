@@ -3,7 +3,7 @@ import { reducer, initialState } from "./reducer";
 
 export const State = React.createContext<Array<any>>([]);
 
-const AppState: FC = ({ children }: any) => (
+const AppState: FC = ({ children }: any): JSX.Element => (
   <State.Provider value={useReducer(reducer, initialState)}>
     {children}
   </State.Provider>

@@ -1,6 +1,6 @@
-import React, { FC, useState, useContext} from "react";
+import React, { FC, useContext} from "react";
 import { State } from "state";
-import { UPDATE_COORDINATES } from "state/types";
+import { UPDATE_COORDINATES, LOADING } from "state/types";
 import { getLocation } from "utilities/get-location";
 import { Input, Icon } from 'semantic-ui-react';
 
@@ -11,30 +11,28 @@ interface Location {
 
 const Button: FC = (): JSX.Element => {
 
-  const [, dispatch] = useContext(State);
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [{ loading }, dispatch] = useContext(State);
 
   // Handle the click
   const handleClick: Function = async (): Promise<any> => {
-    setLoading(true);
+    
+    dispatch({ type: LOADING, payload: true });
     
     // Get the Location
     let loc: Location = await getLocation();
-    
-    // Update the State
-    dispatch({
-      type: UPDATE_COORDINATES,
-      payload: {
+
+    dispatch({ type: UPDATE_COORDINATES, payload: {
         lat: loc.lat,
         lon: loc.lon
       }
     });
 
-    setLoading(false);
+    dispatch({ type: LOADING, payload: false });
+
   }
 
   return(
-    <Input 
+    <Input
       icon={
         <Icon name={!loading ?
           'location arrow' :
@@ -45,6 +43,7 @@ const Button: FC = (): JSX.Element => {
         />
       } 
       placeholder='Search...'
+      style={{ minWidth: '30%' }}
     />
   )
 }

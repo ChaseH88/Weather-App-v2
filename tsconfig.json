@@ -14,10 +14,10 @@
     "outDir": "build",
     "lib": ["es6", "es7", "dom"],
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "/",
+    "baseUrl": "src",
     "paths": {
       "classes/*": ["./src/classes/"],
-      "components/*": ["./src/components/*"],
+      "components/*": ["./components/*"],
       "hooks/*": ["./src/hooks/*"],
       "state/*": ["./state/*"],
       "utilities/*": ["./utilities/*"]

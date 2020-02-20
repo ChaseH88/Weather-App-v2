@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Grid } from "semantic-ui-react";
-import Button from "../Form";
-import DailyForecast from "../Dashboard/DailyForecast";
+import Form from "../Form";
+import DailyForecast from "components/Dashboard/DailyForecast";
 
 const Layout: FC = ({ children }: any): JSX.Element => {
  
@@ -9,8 +9,8 @@ const Layout: FC = ({ children }: any): JSX.Element => {
     <Grid centered columns={1}>
       
       <Grid.Row>
-        <Grid.Column>
-          <Button />
+        <Grid.Column textAlign={'center'}>
+          <Form />
         </Grid.Column>
       </Grid.Row>
 
