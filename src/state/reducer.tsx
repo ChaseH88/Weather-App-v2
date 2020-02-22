@@ -1,15 +1,31 @@
 import * as types from "./types";
 
 interface AppState {
-  loading?: boolean
-  location?: object | null
-  dailyForecast?: object | null
+  app?: {
+    loading?: boolean,
+    ready?: boolean
+  }
+  location?: {
+    coordinates?: object
+    fullLocation?: string | null
+  },
+  weatherDetails?: {
+    dailyForecast?: object | null,
+  }
 }
 
 export const initialState: AppState = {
-  location: null,
-  loading: false,
-  dailyForecast: null
+  app: {
+    loading: false,
+    ready: false
+  },
+  location: {
+    coordinates: {},
+    fullLocation: null
+  },
+  weatherDetails: {
+    dailyForecast: null,
+  }
 }
 
 interface Reducer {
@@ -17,24 +33,71 @@ interface Reducer {
   payload: any
 }
 
-export const reducer = (state: Object, { type, payload }: Reducer): AppState => {
+export const reducer = (state: AppState, { type, payload }: Reducer): AppState => {
   switch (type) {
+
+    // --- Set Global Loading ---
     case types.LOADING: 
       return {
         ...state,
-        loading: payload
+        app: {
+          ...state.app,
+          loading: payload
+        }
       }
+
+    // --- Update App Coordinates ---
     case types.UPDATE_COORDINATES:
       return {
         ...state,
-        location: { ...payload }
+        location: {
+          ...state.location,
+          coordinates: payload
+        },
+        app: {
+          ...state.app,
+          ready: checkReady(payload)
+        }
       }
+      
+    // --- Set Daily Forecast ---
     case types.SET_DAILY_FORECAST:
       return {
         ...state,
-        dailyForecast: payload
+        weatherDetails: {
+          ...state.weatherDetails,
+          dailyForecast: payload
+        }
       }
+      
+    // --- Set Full Location
+    case types.SET_FULL_LOCATION:
+      return {
+        ...state,
+        location: {
+          ...state.location,
+          fullLocation: payload
+        }
+      }
+
+    // Clears the app state...the master reset!
+    case types.CLEAR:
+      return initialState;
+
+    // default as needed......
       default:
         return state;
   }
+}
+
+/**
+ * Checks the initial value, should always return
+ * true, but just making sure before app is updated
+ * @param state 
+ */
+function checkReady(state: any): boolean{
+  return(
+    Object.values(state)
+      .some((l: any) => l !== null)
+  );
 }

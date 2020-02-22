@@ -17,6 +17,14 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
+        test: /\.scss$/,
+        use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+        ],
+      },
+      {
         test: /\.(png|jpe?g|gif)$/,
         use: [
           {
@@ -54,12 +62,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".css", ".ts", ".tsx"],
+    extensions: ["*", ".js", ".jsx", ".css", ".css", ".ts", ".tsx"],
     alias: {
       'classes': resolve(__dirname, '../src/classes'),
       'components': resolve(__dirname, '../src/components'),
       'hooks': resolve(__dirname, '../src/hooks'),
       'state': resolve(__dirname, '../src/state'),
+      'styles': resolve(__dirname, '../src/styles'),
       'utilities': resolve(__dirname, '../src/utilities'),
     }
   },

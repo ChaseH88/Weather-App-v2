@@ -19,7 +19,7 @@ interface LocationData {
 export async function getDailyForecast<T>(obj?: LocationData){
   // ?lat=30.6601984&lon=-87.90425599999999
   //const response = await instance.get(`{{URL}}/forecast/daily${`  `}&key=${key}`);
-  const response = await instance.get(`/forecast/daily?lat=30.6601984&lon=-87.90425599999999&key=${key}`);
+  const response = await instance.get(`/forecast/daily?units=i&lat=30.6601984&lon=-87.90425599999999&key=${key}`);
   return handleResponse(response);  
 }
 

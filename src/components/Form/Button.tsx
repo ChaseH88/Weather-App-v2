@@ -1,6 +1,6 @@
 import React, { FC, useContext} from "react";
 import { State } from "state";
-import { UPDATE_COORDINATES, LOADING } from "state/types";
+import { UPDATE_COORDINATES, LOADING, SET_FULL_LOCATION, CLEAR } from "state/types";
 import { getLocation } from "utilities/get-location";
 import { Input, Icon } from 'semantic-ui-react';
 
@@ -15,7 +15,8 @@ const Button: FC = (): JSX.Element => {
 
   // Handle the click
   const handleClick: Function = async (): Promise<any> => {
-    
+
+    dispatch({ type: CLEAR });
     dispatch({ type: LOADING, payload: true });
     
     // Get the Location
@@ -31,6 +32,18 @@ const Button: FC = (): JSX.Element => {
 
   }
 
+  const handleChange = ({ value:v }: any) => {
+    dispatch({ type: SET_FULL_LOCATION, payload: v });
+  }
+
+  const handleSubmit = async (keyCode: any) => {
+    if(keyCode !== 13) return;
+    dispatch({ type: LOADING, payload: true });
+    dispatch({ type: CLEAR });
+    // await 
+
+  }
+
   return(
     <Input
       icon={
@@ -41,7 +54,9 @@ const Button: FC = (): JSX.Element => {
         onClick={() => handleClick()}
         link
         />
-      } 
+      }
+      onChange={({ target }: any) => handleChange(target)}
+      onKeyDown={({ keyCode }: any) => handleSubmit(keyCode)}
       placeholder='Search...'
       style={{ minWidth: '30%' }}
     />
