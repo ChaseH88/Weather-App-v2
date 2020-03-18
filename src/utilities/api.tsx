@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { CurrentWeatherResponse } from "../_types";
 
 const instance: AxiosInstance = axios.create({
   baseURL: 'https://api.weatherbit.io/v2.0',
@@ -16,26 +17,9 @@ interface LocationData {
   lon?: number
 }
 
-export async function getDailyForecast<T>(obj?: LocationData){
+export async function dailyForecast<T>(obj?: LocationData){
   // ?lat=30.6601984&lon=-87.90425599999999
   //const response = await instance.get(`{{URL}}/forecast/daily${`  `}&key=${key}`);
   const response = await instance.get(`/forecast/daily?units=i&lat=30.6601984&lon=-87.90425599999999&key=${key}`);
-  return handleResponse(response);  
-}
-
-
-
-
-type Response = {
-  data: object,
-  status: number 
-}
-
-type JSON_Data = object | void;
-
-function handleResponse({ data, status }: Response): JSON_Data {
-  if(status != 200){
-    return console.log('Error with API');
-  }
-  return data;
+  return response as unknown as CurrentWeatherResponse;
 }

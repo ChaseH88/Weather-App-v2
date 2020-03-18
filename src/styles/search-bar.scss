@@ -1,0 +1,36 @@
+#search {
+  * {
+      color: #fff;
+  }
+  .MuiInputLabel-root.Mui-focused {
+      opacity: .4
+  }
+  
+  .MuiInputBase-root {
+      
+      & .MuiInputLabel-root.Mui-focused {
+          color: #fff;
+      }
+      
+      & label {
+          color: #fff;
+      }
+      color: #fff;
+      background-color: rgba(255,255,255,0.1);
+      
+      &:before, &:after {
+          border-color: #fff;
+      }
+      input {
+          min-width: 300px;
+          &::placeholder {
+              color: #fff !important;
+          }
+      }
+  }
+  
+  button {
+      margin: 0 0 0 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+  }
+}

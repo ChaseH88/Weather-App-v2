@@ -1,37 +1,25 @@
 import React, { FC, useContext, useEffect } from "react";
 import { State } from "state";
-import { LOADING, SET_DAILY_FORECAST } from "state/types";
-import { getDailyForecast } from "utilities/api";
-import DailyForecast_Grid from "./DailyForecast_Grid";
+// import DailyForecast_Grid from "./DailyForecast_Grid";
+import { getDailyForecast } from "../../state/actions";
+import { useLocation } from "../../hooks";
 
 
 const DailyForecast: FC = (props: any): JSX.Element => {
 
   // Grab the daily forecast data
-  const [{ weatherDetails: { dailyForecast } }, dispatch] = useContext(State);
+  const [ { weatherDetails: { dailyForecast }}, dispatch] = useContext(State);
+  const location = useLocation();
+  console.log(dailyForecast, location);
 
   useEffect(() => {
-    async function loadData(){
-
-      // Get the data
-      dispatch({ type: LOADING, payload: true });
-      const data = await getDailyForecast<Promise<object>>();
-      dispatch({ type: LOADING, payload: false });
-      
-      // Update context
-      dispatch({
-        type: SET_DAILY_FORECAST,
-        payload: data
-      });
-
-    }
-    loadData();
+    getDailyForecast(dispatch, location);
   }, []);
 
   // RENDER
-  if(dailyForecast){
-    return <DailyForecast_Grid data={dailyForecast.data} />;
-  }
+  // if(dailyForecast){
+  //   return <DailyForecast_Grid data={dailyForecast.data} />;
+  // }
   return <p>Loading</p>;
 };
 

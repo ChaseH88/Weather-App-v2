@@ -7,7 +7,8 @@ interface AppState {
   }
   location?: {
     coordinates?: object
-    fullLocation?: string | null
+    fullLocation?: string | null,
+    zipcode?: number | null
   },
   weatherDetails?: {
     dailyForecast?: object | null,
@@ -21,7 +22,8 @@ export const initialState: AppState = {
   },
   location: {
     coordinates: {},
-    fullLocation: null
+    fullLocation: null,
+    zipcode: null
   },
   weatherDetails: {
     dailyForecast: null,
@@ -77,6 +79,16 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
         location: {
           ...state.location,
           fullLocation: payload
+        }
+      }
+
+    // --- Set Zip Code
+    case types.SET_ZIPCODE:
+      return {
+        ...state,
+        location: {
+          ...state.location,
+          zipcode: payload
         }
       }
 

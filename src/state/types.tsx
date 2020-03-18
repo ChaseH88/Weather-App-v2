@@ -7,4 +7,5 @@ export const SET_DAILY_FORECAST: string = '@weather/daily-forecast';
 // Location
 export const CLEAR: string = '@location/clear';
 export const UPDATE_COORDINATES: string = '@location/update';
+export const SET_ZIPCODE: string = '@location/zipcode_update';
 export const SET_FULL_LOCATION: string = '@location/full_location_update';
