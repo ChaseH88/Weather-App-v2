@@ -1,56 +1,67 @@
-import * as types from "./types";
 import { getLocation } from "../utilities/get-location";
 import API from "../classes/API";
-import { CurrentWeatherResponse } from "../_types";
+import App from "../classes/App";
+import {
+  DailyForecastResponse,
+  SevereAlertsResponse,
+  CurrentWeatherResponse
+} from "../_types";
 
 interface Location {
   lat: number,
   lon: number
 }
 
-
-export const setLoading = () => async (dispatch: any) => {
-  console.log(dispatch);
-  return types.LOADING;
-} 
-
-
 export const updateLocation = async (dispatch: Function) => {
 
-  dispatch({ type: types.CLEAR });
+  // Initialize the main app class
+  const app = new App(dispatch);
 
-  dispatch({ type: types.LOADING, payload: true });
-  
-  // Get the Location
+  // Clear the state, grab and set the location
+  app.clear();
   let loc: Location = await getLocation();
-
-  dispatch({ type: types.UPDATE_COORDINATES, payload: {
-      lat: loc.lat,
-      lon: loc.lon
-    }
-  });
-
-  dispatch({ type: types.LOADING, payload: false });
+  app.updateLocation(loc);
 
 }
 
 
-export const getDailyForecast = async (dispatch: Function, location: any) => {
-
-  const api = new API({
-    lat: 30.6601984,
-    lon:-87.90425599999999
-  });
-
-  console.log(api);
-
+export const getCurrentWeather = async (dispatch: Function, location: any) => {
+  
+  const app = new App(dispatch);
+  const api = new API(location.coordinates);
+  
   // Get the data
-  dispatch({ type: types.LOADING, payload: true });
-  const data: CurrentWeatherResponse = await api.dailyForecast();
-  dispatch({ type: types.LOADING, payload: false });
+  const data: CurrentWeatherResponse = await api.currentForecast();
   
   // Update context with the new data
-  dispatch({ type: types.SET_DAILY_FORECAST, payload: data });
-  dispatch({ type: types.SET_FULL_LOCATION, payload: `${data.city_name}, ${data.state_code}` });
+  app.setCurrentForecast(data);
+
+};
+
+
+export const getDailyForecast = async (dispatch: Function, location: any) => {
+  
+  const app = new App(dispatch);
+  const api = new API(location.coordinates);
+  
+  // Get the data
+  const data: DailyForecastResponse = await api.dailyForecast();
+  
+  // Update context with the new data
+  app.setDailyForecast(data);
+
+};
+
+
+export const getSevereAlerts = async (dispatch: Function, location: any) => {
+  
+  const app = new App(dispatch);
+  const api = new API(location.coordinates);
+  
+  // Get the data
+  const data: SevereAlertsResponse = await api.weatherAlerts();
+  
+  // Update context with the new data
+  app.setWeatherAlerts(data);
 
 };

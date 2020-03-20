@@ -16,6 +16,10 @@ export const SearchBar: FC = (): JSX.Element => {
     updateLocation(dispatch)
   }
 
+  const showSevereAlertsNum = () => {
+    return 3;
+  }
+
   return(
     <div id="search">
       <TextField
@@ -26,7 +30,7 @@ export const SearchBar: FC = (): JSX.Element => {
         <SearchIcon />
       </IconButton>
       <IconButton color="inherit">
-        <Badge badgeContent={4} color="secondary">
+        <Badge badgeContent={showSevereAlertsNum()} color="secondary">
           <NotificationsIcon />
         </Badge>
       </IconButton>

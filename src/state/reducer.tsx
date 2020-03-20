@@ -11,7 +11,9 @@ interface AppState {
     zipcode?: number | null
   },
   weatherDetails?: {
+    currentWeather?: object | null,
     dailyForecast?: object | null,
+    severeAlerts?: object | null
   }
 }
 
@@ -26,7 +28,9 @@ export const initialState: AppState = {
     zipcode: null
   },
   weatherDetails: {
+    currentWeather: null,
     dailyForecast: null,
+    severeAlerts: null
   }
 }
 
@@ -61,6 +65,16 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
           ready: checkReady(payload)
         }
       }
+
+    // --- Set Current Weather ---
+    case types.SET_CURRENT_WEATHER:
+      return {
+        ...state,
+        weatherDetails: {
+          ...state.weatherDetails,
+          currentWeather: payload
+        }
+      }
       
     // --- Set Daily Forecast ---
     case types.SET_DAILY_FORECAST:
@@ -69,6 +83,16 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
         weatherDetails: {
           ...state.weatherDetails,
           dailyForecast: payload
+        }
+      }
+
+    // --- Set Severe Alerts ---
+    case types.SET_WEATHER_ALERTS:
+      return {
+        ...state,
+        weatherDetails: {
+          ...state.weatherDetails,
+          severeAlerts: payload
         }
       }
       

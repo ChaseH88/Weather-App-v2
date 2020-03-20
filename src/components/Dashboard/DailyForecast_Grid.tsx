@@ -1,20 +1,31 @@
 import React, { FC } from "react";
 import "styles/daily-forecast.scss";
+import { key } from "../../utilities/key";
+import moment from "moment";
 
 type ForecastProps = {
-  data: [object]
+  data: {
+    data: object[]
+  }
 };
 
 const DailyForecast_Grid: FC<ForecastProps> = ({ data }): any => {
+  console.log(data.data);
   return(
     <div>
       <div id="daily-forecast" className="panel">
         <div className="wrapper">
-          {data.map((day: any): JSX.Element => (
-            <div className="day">
+          {data.data.map((day: any): JSX.Element => (
+            <div className="day" key={key()}>
               <div className="container">
                 <img src={`https://www.weatherbit.io/static/img/icons/${day.weather.icon}.png`} />
                 
+                <div className="date">
+                  <span>
+                    {moment(new Date(day.valid_date)).format("MM/DD")}
+                  </span>
+                </div>
+
                 <div className="temperature">
                   <span title={`High Temperature\n${day.high_temp}`}>
                     {day.high_temp}&deg;

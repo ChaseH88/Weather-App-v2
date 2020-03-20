@@ -1,5 +1,9 @@
 import axios, { AxiosInstance } from "axios";
-import { CurrentWeatherResponse } from "../_types";
+import {
+  CurrentWeatherResponse,
+  DailyForecastResponse,
+  SevereAlertsResponse
+} from "../_types";
 
 interface LocationData {
   lat?: number
@@ -16,7 +20,7 @@ class API {
   private Axios: AxiosInstance = axios.create({
     baseURL: 'https://api.weatherbit.io/v2.0',
     method: 'get',
-    timeout: 1000,
+    timeout: 10000,
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
@@ -32,18 +36,53 @@ class API {
     }
   }
 
+  /**
+   * Format the location
+   * @param loc 
+   */
   private formatLocation(loc: any): QueryString {
 
     const queryString: QueryString = Object.entries(loc)
-      .map(({ a, b }: any) => `${a}=${b}`)
+      .map(([a, b]: any): string => `${a}=${b}`)
       .join('&');
-
+    
     return queryString as QueryString;
   }
 
-  async dailyForecast<T>(): Promise<CurrentWeatherResponse> {
-    const response = await this.Axios.get(`/forecast/daily?${this.units}&${this.location}&key=${this.key}`);
+  /**
+   * Gets the user's current forecast
+   */
+  async currentForecast<T>(): Promise<CurrentWeatherResponse> {
+    
+    const response = await this.Axios.get(
+      `/current?${this.units}&${this.location}&key=${this.key}`
+    );
+    
     return response as unknown as CurrentWeatherResponse;
+  }
+
+  /**
+   * Gets the user's daily forecast
+   */
+  async dailyForecast<T>(): Promise<DailyForecastResponse> {
+    
+    const response = await this.Axios.get(
+      `/forecast/daily?${this.units}&${this.location}&key=${this.key}`
+    );
+    
+    return response as unknown as DailyForecastResponse;
+  }
+
+  /**
+   * Gets the user's local weather alerts
+   */
+  async weatherAlerts<T>(): Promise<SevereAlertsResponse> {
+    
+    const response = await this.Axios.get(
+      `/alerts?${this.units}&${this.location}&key=${this.key}`
+    );
+    
+    return response as unknown as SevereAlertsResponse;
   }
 
 }

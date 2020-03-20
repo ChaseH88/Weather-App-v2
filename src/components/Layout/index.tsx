@@ -10,12 +10,13 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import IconButton from '@material-ui/core/IconButton';
-import { useLocation } from "../../hooks"
+import { useApp } from "../../hooks"
 
 // Components
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import DailyForecast from "../../components/Dashboard/DailyForecast";
+import SevereAlerts from "../../components/Dashboard/SevereAlerts";
 
 // Styles
 import { useStyles } from "./Dashboard_Styles";
@@ -24,7 +25,7 @@ export default function Dashboard() {
   const classes:any = useStyles();
   
   const [open, setOpen] = useState(false);
-  const location = useLocation();
+  const { ready } = useApp();
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -57,20 +58,20 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={6} lg={5}>
               <Paper className={fixedHeightPaper}>
                 Paper
               </Paper>
             </Grid>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={6} lg={7}>
               <Paper className={fixedHeightPaper}>
-                {location && <DailyForecast />}
+                {ready && <DailyForecast />}
               </Paper>
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                Paper
+                {ready && <SevereAlerts />}
               </Paper>
             </Grid>
           </Grid>
