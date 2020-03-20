@@ -4,18 +4,15 @@ import { key } from "../../utilities/key";
 import moment from "moment";
 
 type ForecastProps = {
-  data: {
-    data: object[]
-  }
+  data: object[]
 };
 
 const DailyForecast_Grid: FC<ForecastProps> = ({ data }): any => {
-  console.log(data.data);
   return(
     <div>
       <div id="daily-forecast" className="panel">
         <div className="wrapper">
-          {data.data.map((day: any): JSX.Element => (
+          {data.map((day: any): JSX.Element => (
             <div className="day" key={key()}>
               <div className="container">
                 <img src={`https://www.weatherbit.io/static/img/icons/${day.weather.icon}.png`} />

@@ -13,7 +13,8 @@ interface AppState {
   weatherDetails?: {
     currentWeather?: object | null,
     dailyForecast?: object | null,
-    severeAlerts?: object | null
+    severeAlerts?: object | null,
+    severeAlertsCount?: number
   }
 }
 
@@ -30,7 +31,8 @@ export const initialState: AppState = {
   weatherDetails: {
     currentWeather: null,
     dailyForecast: null,
-    severeAlerts: null
+    severeAlerts: null,
+    severeAlertsCount: 0
   }
 }
 
@@ -93,6 +95,16 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
         weatherDetails: {
           ...state.weatherDetails,
           severeAlerts: payload
+        }
+      }
+
+      // --- Set Severe Alerts Count ---
+    case types.SET_WEATHER_ALERTS_COUNT:
+      return {
+        ...state,
+        weatherDetails: {
+          ...state.weatherDetails,
+          severeAlertsCount: payload
         }
       }
       

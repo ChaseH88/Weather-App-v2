@@ -1,36 +1,40 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Badge from '@material-ui/core/Badge';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import { updateLocation } from "../../state/actions";
-import { State } from "../../state"
+import { getGeolocationCoordinates, searchLocation } from "../../state/actions";
+import { State } from "../../state";
+
+// Styles
 import "styles/search-bar.scss";
+
+// Icons
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import SearchIcon from '@material-ui/icons/Search';
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 
 export const SearchBar: FC = (): JSX.Element => {
 
-  const [, dispatch] = useContext(State);
-
-  const handleSubmit = () => {
-    updateLocation(dispatch)
-  }
-
-  const showSevereAlertsNum = () => {
-    return 3;
-  }
-
+  const [search, setSearch] = useState("");
+  const [{ weatherDetails: { severeAlertsCount } }, dispatch] = useContext(State);
+  
   return(
     <div id="search">
       <TextField
         size="small"
         label="Search..." variant="filled"
+        onChange={({ target }) => {
+          setSearch(target.value);
+        }}
       />
-      <IconButton color="inherit" onClick={() => handleSubmit()}>
+      <IconButton color="inherit" onClick={() => searchLocation(dispatch, search)}>
         <SearchIcon />
       </IconButton>
+      <IconButton color="inherit" onClick={() => getGeolocationCoordinates(dispatch)}>
+        <MyLocationIcon />
+      </IconButton>
       <IconButton color="inherit">
-        <Badge badgeContent={showSevereAlertsNum()} color="secondary">
+        <Badge badgeContent={severeAlertsCount} color="secondary">
           <NotificationsIcon />
         </Badge>
       </IconButton>

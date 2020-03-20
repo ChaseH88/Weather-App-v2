@@ -9,7 +9,7 @@ type DispatchFunction = Function;
 
 class App {
 
-  private dispatch: DispatchFunction;
+  protected dispatch: DispatchFunction;
 
   constructor(dispatch: DispatchFunction){
     this.dispatch = dispatch;
@@ -36,17 +36,26 @@ class App {
   }
 
   setDailyForecast(data: DailyForecastResponse): void {
+
     this.dispatch({
         type: types.SET_DAILY_FORECAST,
         payload: data
     });
+    
   }
 
   setWeatherAlerts(data: SevereAlertsResponse): void {
-      this.dispatch({
-          type: types.SET_WEATHER_ALERTS,
-          payload: data
-      })
+
+    this.dispatch({
+      type: types.SET_WEATHER_ALERTS_COUNT,
+      payload: data.alerts.length
+    });
+
+    this.dispatch({
+      type: types.SET_WEATHER_ALERTS,
+      payload: data
+    })
+
   }
 
   setCurrentForecast(data: CurrentWeatherResponse): void {
