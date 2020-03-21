@@ -1,4 +1,12 @@
+import { Dispatch } from "react";
 import axios, { AxiosInstance } from "axios";
+import * as types from "../state/types";
+
+declare global {
+  interface Window {
+    dispatch: Dispatch<any>
+  }
+}
 
 interface LocationData {
   lat?: number
@@ -33,8 +41,18 @@ class MapBoxAPI {
 
   protected location: string;
 
+  protected dispatch: Dispatch<{
+    type: types.ContextType,
+    payload?: any
+  }>;
+
+  /**
+   * API used to search for a user inputted location. This class has a method called 'get' that returns the coordinates of that location.
+   * @param searchWord The user input of their location
+   */
   constructor(searchWord: string){
     this.location = searchWord;
+    this.dispatch = window.dispatch;
   }
 
   public async get(): Promise<LocationData | void> {
@@ -50,11 +68,18 @@ class MapBoxAPI {
         return console.error('Error while searching for location.');
     }
 
-    // Grab the first location and the coordinates
+    // The API returns locations that are in an array
+    // Take the closest match (first) location and grab the coordinates
     const location = response.data.features[0];
     let [lon, lat] = location.center;
 
-    // Grab the data
+    // Grab the full location name and add to the app state
+    this.dispatch({
+      type: types.SET_FULL_LOCATION,
+      payload: location.place_name
+    })
+
+    // Return the data in an object so the Weather API can work with it
     return { lon, lat } as LocationData;
   }
 }

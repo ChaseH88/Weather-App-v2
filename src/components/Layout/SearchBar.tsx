@@ -16,7 +16,7 @@ import MyLocationIcon from '@material-ui/icons/MyLocation';
 export const SearchBar: FC = (): JSX.Element => {
 
   const [search, setSearch] = useState("");
-  const [{ weatherDetails: { severeAlertsCount } }, dispatch] = useContext(State);
+  const [{ weatherDetails: { severeAlertsCount } }] = useContext(State);
   
   return(
     <div id="search">
@@ -27,10 +27,10 @@ export const SearchBar: FC = (): JSX.Element => {
           setSearch(target.value);
         }}
       />
-      <IconButton color="inherit" onClick={() => searchLocation(dispatch, search)}>
+      <IconButton color="inherit" onClick={() => searchLocation(search)}>
         <SearchIcon />
       </IconButton>
-      <IconButton color="inherit" onClick={() => getGeolocationCoordinates(dispatch)}>
+      <IconButton color="inherit" onClick={() => getGeolocationCoordinates()}>
         <MyLocationIcon />
       </IconButton>
       <IconButton color="inherit">

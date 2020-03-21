@@ -1,3 +1,9 @@
+const options: object = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
 export const getLocation: Function = (): any => (
   new Promise((resolve, reject) => {
     
@@ -10,11 +16,9 @@ export const getLocation: Function = (): any => (
       });
     }
     
-    geo.getCurrentPosition(showLocation, (err: any) => reject(err), {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    });
+    geo.getCurrentPosition(
+      showLocation, (err: any) => reject(err), options
+    );
 
   }
 ));

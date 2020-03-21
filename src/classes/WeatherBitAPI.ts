@@ -5,7 +5,7 @@ import {
   SevereAlertsResponse
 } from "../_types";
 
-interface LocationData {
+export interface LocationData {
   lat?: number
   lon?: number
 }

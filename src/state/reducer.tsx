@@ -25,8 +25,7 @@ export const initialState: AppState = {
   },
   location: {
     coordinates: {},
-    fullLocation: null,
-    zipcode: null
+    fullLocation: null
   },
   weatherDetails: {
     currentWeather: null,
@@ -63,8 +62,7 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
           coordinates: payload
         },
         app: {
-          ...state.app,
-          ready: checkReady(payload)
+          ...state.app
         }
       }
 
@@ -136,16 +134,4 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
       default:
         return state;
   }
-}
-
-/**
- * Checks the initial value, should always return
- * true, but just making sure before app is updated
- * @param state 
- */
-function checkReady(state: any): boolean{
-  return(
-    Object.values(state)
-      .some((l: any) => l !== null)
-  );
 }

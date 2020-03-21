@@ -1,33 +1,64 @@
+import { Dispatch } from "react";
 import * as types from "../state/types";
+import { LocationData } from "./WeatherBitAPI";
 import {
     DailyForecastResponse,
     SevereAlertsResponse,
     CurrentWeatherResponse
 } from "../_types";
 
-type DispatchFunction = Function;
+declare global {
+  interface Window {
+    dispatch: Dispatch<any>
+  }
+}
 
 class App {
 
-  protected dispatch: DispatchFunction;
+  protected dispatch: Dispatch<{
+    type: types.ContextType,
+    payload?: any
+  }>;
 
-  constructor(dispatch: DispatchFunction){
-    this.dispatch = dispatch;
+  constructor(){
+    // Grab the dispatch function from the window
+    this.dispatch = window.dispatch;
   }
   
   /**
    * Clears the entire app state
    */
-  clear(){
+  public clear(){
     this.dispatch({
         type: types.CLEAR
     });
   }
 
   /**
-   * Update the user's location
+   * Sets the app's global loading variable to true
    */
-  updateLocation(location: { lat: number, lon: number }): void {
+  public startLoading(){
+    this.dispatch({
+      type: types.LOADING,
+      payload: true
+    });
+  }
+
+  /**
+   * Sets the app's global loading variable to false
+   */
+  public stopLoading(){
+    this.dispatch({
+      type: types.LOADING,
+      payload: false
+    });
+  }
+  
+  /**
+   * Update the user's location with coordinates
+   * @param location Object including the longitude and latitude
+   */
+  public updateLocation(location: LocationData): void {
     this.dispatch({ type: types.UPDATE_COORDINATES, payload: {
         lat: location.lat,
         lon: location.lon
@@ -35,16 +66,22 @@ class App {
     });
   }
 
-  setDailyForecast(data: DailyForecastResponse): void {
-
+  /**
+   * Sets the daily forecast data to the app context.
+   * @param data 
+   */
+  public setDailyForecast(data: DailyForecastResponse): void {
     this.dispatch({
         type: types.SET_DAILY_FORECAST,
         payload: data
     });
-    
   }
 
-  setWeatherAlerts(data: SevereAlertsResponse): void {
+  /**
+   * Sets the weather/severe alerts data to the app context.
+   * @param data 
+   */
+  public setWeatherAlerts(data: SevereAlertsResponse): void {
 
     this.dispatch({
       type: types.SET_WEATHER_ALERTS_COUNT,
@@ -58,7 +95,11 @@ class App {
 
   }
 
-  setCurrentForecast(data: CurrentWeatherResponse): void {
+  /**
+   * Sets the current forecast data to the app context.
+   * @param data 
+   */
+  public setCurrentForecast(data: CurrentWeatherResponse): void {
     this.dispatch({
         type: types.SET_CURRENT_WEATHER,
         payload: data

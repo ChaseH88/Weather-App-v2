@@ -16,7 +16,8 @@ import { useApp } from "../../hooks"
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import DailyForecast from "../../components/Dashboard/DailyForecast";
-import SevereAlerts from "../../components/Dashboard/SevereAlerts";
+import CurrentWeather from "../../components/Dashboard/CurrentWeather";
+import SevereAlerts from "../Dashboard/SevereAlerts";
 
 // Styles
 import { useStyles } from "./Dashboard_Styles";
@@ -60,7 +61,7 @@ export default function Dashboard() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={6} lg={5}>
               <Paper className={fixedHeightPaper}>
-                Paper
+                {ready && <CurrentWeather />}
               </Paper>
             </Grid>
             <Grid item xs={12} md={6} lg={7}>

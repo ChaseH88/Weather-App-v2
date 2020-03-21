@@ -13,41 +13,65 @@ interface Location {
   lon: number
 }
 
-export const searchLocation = async (dispatch: Function, searchWord: any) => {
+
+
+/**
+ * Takes user input and set coordinates of that location in the app context.
+ * @param searchWord The users search input
+ */
+export const searchLocation = async (searchWord: any): Promise<void> => {
 
   // Initialize the main app
-  const app = new App(dispatch);
+  const app = new App();
 
   // Clear the state
   app.clear();
 
   // Grab the location coordinates
-  const location = new MapBoxAPI(searchWord);
-
+  const mapAPI = new MapBoxAPI(searchWord);
+  const location = await mapAPI.get()
+  
   // Update the app location
-  console.log(location)
-  app.updateLocation(await location.get() as any);
+  app.updateLocation(location as any);
 
 }
 
-export const getGeolocationCoordinates = async (dispatch: Function) => {
+
+/**
+ * Takes user's current geolocation and sets coordinates of that location in the app context.
+ */
+export const getGeolocationCoordinates = async (): Promise<void> => {
 
   // Initialize the main app class
-  const app = new App(dispatch);
+  const app = new App();
 
   // Clear the state
   app.clear();
 
   // Grab the user location and update
   let loc: Location = await getLocation();
+  console.log(loc)
+  
+  // Use the coordinates to lookup the city name
+
+  /**
+   * TO DO!!!
+   */
+
+  // const mapAPI = new MapBoxAPI(loc)
+
   app.updateLocation(loc);
 
 }
 
 
-export const getCurrentWeather = async (dispatch: Function, location: any) => {
+/**
+ * Updates the user's current forecast in the app context with their location
+ * @param location The user's location
+ */
+export const getCurrentWeather = async (location: any): Promise<void> => {
   
-  const app = new App(dispatch);
+  const app = new App();
   const api = new WeatherBitAPI(location.coordinates);
   
   // Get the data
@@ -59,9 +83,13 @@ export const getCurrentWeather = async (dispatch: Function, location: any) => {
 };
 
 
-export const getDailyForecast = async (dispatch: Function, location: any) => {
+/**
+ * Updates the user's daily forecast in the app context with their location
+ * @param location The user's location
+ */
+export const getDailyForecast = async (location: any): Promise<void> => {
   
-  const app = new App(dispatch);
+  const app = new App();
   const api = new WeatherBitAPI(location.coordinates);
   
   // Get the data
@@ -73,9 +101,13 @@ export const getDailyForecast = async (dispatch: Function, location: any) => {
 };
 
 
-export const getSevereAlerts = async (dispatch: Function, location: any) => {
+/**
+ * Updates the user's severe alerts in the app context with their location
+ * @param location The user's location
+ */
+export const getSevereAlerts = async (location: any): Promise<void> => {
   
-  const app = new App(dispatch);
+  const app = new App();
   const api = new WeatherBitAPI(location.coordinates);
   
   // Get the data
