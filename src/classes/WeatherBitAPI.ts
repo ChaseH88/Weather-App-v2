@@ -4,6 +4,7 @@ import {
   DailyForecastResponse,
   SevereAlertsResponse
 } from "../_types";
+import Dispatch from "./Dispatch";
 
 export interface LocationData {
   lat?: number
@@ -22,7 +23,7 @@ interface ApiResponse {
 type WeatherbitKey = string;
 type QueryString = string;
 
-class WeatherBitAPI {
+class WeatherBitAPI extends Dispatch {
   
   protected key: WeatherbitKey = '47b4b166bf68465eb7c4695bd5f4e6f5';
   
@@ -39,9 +40,11 @@ class WeatherBitAPI {
   protected units: String = 'units=i';
 
   constructor(loc: LocationData, units?: String){
-    this.location = this.formatLocation(loc);
-    if(units){
-      this.units = units;
+    super(){
+      this.location = this.formatLocation(loc);
+      if(units){
+        this.units = units;
+      }
     }
   }
 

@@ -1,12 +1,6 @@
-import { Dispatch } from "react";
 import axios, { AxiosInstance } from "axios";
 import * as types from "../state/types";
-
-declare global {
-  interface Window {
-    dispatch: Dispatch<any>
-  }
-}
+import Dispatch from "./Dispatch";
 
 interface LocationData {
   lat?: number
@@ -25,7 +19,7 @@ interface ApiResponse {
 
 type MapBoxKey = string;
 
-class MapBoxAPI {
+class MapBoxAPI extends Dispatch {
   
   protected key: MapBoxKey = 'pk.eyJ1IjoiY2hhc2VoODgiLCJhIjoiY2s4MHQxN2JjMGkwYzNlbG44Zm5yNXFnbyJ9.5T_O4eM8FvzMiNXzZm5s9g';
   protected coordinates: LocationData | null = null;
@@ -41,18 +35,14 @@ class MapBoxAPI {
 
   protected location: string;
 
-  protected dispatch: Dispatch<{
-    type: types.ContextType,
-    payload?: any
-  }>;
-
   /**
    * API used to search for a user inputted location. This class has a method called 'get' that returns the coordinates of that location.
    * @param searchWord The user input of their location
    */
   constructor(searchWord: string){
-    this.location = searchWord;
-    this.dispatch = window.dispatch;
+    super(){
+      this.location = searchWord;
+    }
   }
 
   public async get(): Promise<LocationData | void> {
