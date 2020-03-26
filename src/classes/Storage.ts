@@ -1,3 +1,7 @@
+export enum AppKeys {
+  search_history = 'search_history'
+}
+
 class Storage {
   
   protected no_key_name: string = 'weather-app-settings';
@@ -17,7 +21,7 @@ class Storage {
    * If a key is given, the corresponding object is returned. If not, everything is returned
    * @param key Optional: The key of the object
    */
-  public get(key?: string): object | null {
+  public get(key?: AppKeys): object | null {
 
     let items: string | null = localStorage.getItem(this.main_key);
     let storage: { [key: string]: any[] } = {};
@@ -40,7 +44,7 @@ class Storage {
    * @param key The key in which to storage the data
    * @param value The value containing the data
    */
-  public add(key: string, value: any, multi: boolean = false): void {
+  public add(key: AppKeys, value: any, multi: boolean = false): void {
     
     let items: string | null = localStorage.getItem(this.main_key);
     let storage: object = {};
@@ -62,7 +66,7 @@ class Storage {
    * @param key The key in which to storage the data
    * @param value The value containing the data
    */
-  public delete(key?: string): void {
+  public delete(key?: AppKeys): void {
 
     if(!key){
       localStorage.removeItem(this.main_key);

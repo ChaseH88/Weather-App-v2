@@ -2,7 +2,7 @@ import { getLocation } from "../utilities/get-location";
 import WeatherBitAPI from "../classes/WeatherBitAPI";
 import App from "../classes/App";
 import MapBoxAPI from "../classes/MapBoxAPI";
-import Storage from "../classes/Storage";
+import Storage, { AppKeys } from "../classes/Storage";
 import {
   DailyForecastResponse,
   SevereAlertsResponse,
@@ -24,7 +24,7 @@ export const searchLocation = async (searchWord: any): Promise<void> => {
 
   // Save the search word to storage
   const storage = new Storage();
-  storage.add('search_history', searchWord);
+  storage.add(AppKeys.search_history, searchWord);
 
   // Initialize the main app
   const app = new App();
