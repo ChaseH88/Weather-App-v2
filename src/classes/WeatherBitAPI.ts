@@ -40,11 +40,10 @@ class WeatherBitAPI extends Dispatch {
   protected units: String = 'units=i';
 
   constructor(loc: LocationData, units?: String){
-    super(){
-      this.location = this.formatLocation(loc);
-      if(units){
-        this.units = units;
-      }
+    super()
+    this.location = this.formatLocation(loc);
+    if(units){
+      this.units = units;
     }
   }
 
@@ -59,6 +58,7 @@ class WeatherBitAPI extends Dispatch {
       .join('&');
     
     return queryString as QueryString;
+    
   }
 
   protected handleResponse(res: ApiResponse | null){

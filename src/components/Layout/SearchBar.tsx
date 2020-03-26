@@ -2,7 +2,7 @@ import React, { FC, useContext, useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-import { getGeolocationCoordinates, searchLocation } from "../../state/actions";
+import { findUserLocation, searchLocation } from "../../state/actions";
 import { State } from "../../state";
 
 // Styles
@@ -17,7 +17,7 @@ export const SearchBar: FC = (): JSX.Element => {
 
   const [search, setSearch] = useState("");
   const [{ weatherDetails: { severeAlertsCount } }] = useContext(State);
-  
+
   return(
     <div id="search">
       <TextField
@@ -30,7 +30,7 @@ export const SearchBar: FC = (): JSX.Element => {
       <IconButton color="inherit" onClick={() => searchLocation(search)}>
         <SearchIcon />
       </IconButton>
-      <IconButton color="inherit" onClick={() => getGeolocationCoordinates()}>
+      <IconButton color="inherit" onClick={() => findUserLocation()}>
         <MyLocationIcon />
       </IconButton>
       <IconButton color="inherit">

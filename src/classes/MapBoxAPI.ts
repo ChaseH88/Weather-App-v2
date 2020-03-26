@@ -5,7 +5,7 @@ import Dispatch from "./Dispatch";
 interface LocationData {
   lat?: number
   lon?: number
-  searchWord?: string
+  search?: string
 }
 
 interface ApiResponse {
@@ -33,16 +33,15 @@ class MapBoxAPI extends Dispatch {
     }
   });
 
-  protected location: string;
+  protected location: string | LocationData;
 
   /**
    * API used to search for a user inputted location. This class has a method called 'get' that returns the coordinates of that location.
-   * @param searchWord The user input of their location
+   * @param search The user input of their location
    */
-  constructor(searchWord: string){
-    super(){
-      this.location = searchWord;
-    }
+  constructor(search: string){
+    super();
+    this.location = search;
   }
 
   public async get(): Promise<LocationData | void> {
@@ -61,7 +60,7 @@ class MapBoxAPI extends Dispatch {
     // The API returns locations that are in an array
     // Take the closest match (first) location and grab the coordinates
     const location = response.data.features[0];
-    let [lon, lat] = location.center;
+    const [ lon, lat ] = location.center;
 
     // Grab the full location name and add to the app state
     this.dispatch({

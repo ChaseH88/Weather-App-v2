@@ -2,6 +2,7 @@ import { getLocation } from "../utilities/get-location";
 import WeatherBitAPI from "../classes/WeatherBitAPI";
 import App from "../classes/App";
 import MapBoxAPI from "../classes/MapBoxAPI";
+import Storage from "../classes/Storage";
 import {
   DailyForecastResponse,
   SevereAlertsResponse,
@@ -20,6 +21,10 @@ interface Location {
  * @param searchWord The users search input
  */
 export const searchLocation = async (searchWord: any): Promise<void> => {
+
+  // Save the search word to storage
+  const storage = new Storage();
+  storage.add('search_history', searchWord);
 
   // Initialize the main app
   const app = new App();
@@ -40,7 +45,7 @@ export const searchLocation = async (searchWord: any): Promise<void> => {
 /**
  * Takes user's current geolocation and sets coordinates of that location in the app context.
  */
-export const getGeolocationCoordinates = async (): Promise<void> => {
+export const findUserLocation = async (): Promise<void> => {
 
   // Initialize the main app class
   const app = new App();
@@ -50,17 +55,13 @@ export const getGeolocationCoordinates = async (): Promise<void> => {
 
   // Grab the user location and update
   let loc: Location = await getLocation();
-  console.log(loc)
   
   // Use the coordinates to lookup the city name
-
-  /**
-   * TO DO!!!
-   */
-
-  // const mapAPI = new MapBoxAPI(loc)
-
-  app.updateLocation(loc);
+  const mapAPI = new MapBoxAPI(`${loc.lon}, ${loc.lat}`)
+  const location = await mapAPI.get()
+  
+  // Update the app location
+  app.updateLocation(location as any);
 
 }
 

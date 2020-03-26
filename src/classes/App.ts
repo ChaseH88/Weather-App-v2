@@ -1,5 +1,5 @@
-import { Dispatch } from "react";
 import * as types from "../state/types";
+import Dispatch from "./Dispatch";
 import { LocationData } from "./WeatherBitAPI";
 import {
     DailyForecastResponse,
@@ -7,22 +7,11 @@ import {
     CurrentWeatherResponse
 } from "../_types";
 
-declare global {
-  interface Window {
-    dispatch: Dispatch<any>
-  }
-}
 
-class App {
-
-  protected dispatch: Dispatch<{
-    type: types.ContextType,
-    payload?: any
-  }>;
+class App extends Dispatch {
 
   constructor(){
-    // Grab the dispatch function from the window
-    this.dispatch = window.dispatch;
+    super();
   }
   
   /**
