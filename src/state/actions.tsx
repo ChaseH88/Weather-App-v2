@@ -3,18 +3,22 @@ import WeatherBitAPI from "../classes/WeatherBitAPI";
 import App from "../classes/App";
 import MapBoxAPI from "../classes/MapBoxAPI";
 import Storage, { AppKeys } from "../classes/Storage";
-import {
-  DailyForecastResponse,
-  SevereAlertsResponse,
-  CurrentWeatherResponse
-} from "../_types";
 
 interface Location {
   lat: number,
   lon: number
 }
 
+/**
+ * Open or close the menu
+ * @param open Open or closed
+ */
+export const menuToggle = (open: boolean): void => {
 
+  const app = new App();
+  app.menu(open);
+  
+}
 
 /**
  * Takes user input and set coordinates of that location in the app context.
@@ -29,8 +33,9 @@ export const searchLocation = async (searchWord: any): Promise<void> => {
   // Initialize the main app
   const app = new App();
 
-  // Clear the state
+  // Clear the state and start loading
   app.clear();
+  app.startLoading();
 
   // Grab the location coordinates
   const mapAPI = new MapBoxAPI(searchWord);
@@ -38,6 +43,12 @@ export const searchLocation = async (searchWord: any): Promise<void> => {
   
   // Update the app location
   app.updateLocation(location as any);
+
+  // Fetch the data
+  fetchWeatherData({
+    lat: location.lat,
+    lon: location.lon
+  });
 
 }
 
@@ -50,71 +61,59 @@ export const findUserLocation = async (): Promise<void> => {
   // Initialize the main app class
   const app = new App();
 
-  // Clear the state
+  // Clear the state and start loading
   app.clear();
+  app.startLoading();
 
   // Grab the user location and update
-  let loc: Location = await getLocation();
+  let { lon, lat }: Location = await getLocation();
+
+  // Add Location to Storage
+  const storage = new Storage();
+  storage.add(AppKeys.coordinates, { lat, lon });
   
   // Use the coordinates to lookup the city name
-  const mapAPI = new MapBoxAPI(`${loc.lon}, ${loc.lat}`)
+  const mapAPI = new MapBoxAPI(`${lon}, ${lat}`);
   const location = await mapAPI.get()
-  
+  debugger
   // Update the app location
   app.updateLocation(location as any);
+
+  // Fetch the data
+  fetchWeatherData({
+    lat: location.lat,
+    lon: location.lon
+  });
 
 }
 
 
-/**
- * Updates the user's current forecast in the app context with their location
- * @param location The user's location
- */
-export const getCurrentWeather = async (location: any): Promise<void> => {
+const fetchWeatherData = async (location: { lat: any, lon: any }): Promise<void> => {
   
+  // Initialize the main app class
   const app = new App();
-  const api = new WeatherBitAPI(location.coordinates);
+
+  // Grab Weather Data
+  const api = new WeatherBitAPI(location);
   
+  let data = await Promise.all([
+    api.currentForecast(),
+    api.dailyForecast(),
+    api.weatherAlerts()
+   ]);
+debugger;
   // Get the data
-  const data: CurrentWeatherResponse = await api.currentForecast();
+  const current_weather  = data[0];
+  const daily_forecast   = data[1];
+  const severe_alerts    = data[2];
+  
   
   // Update context with the new data
-  app.setCurrentForecast(data);
+  app.setCurrentForecast(current_weather);
+  app.setDailyForecast(daily_forecast);
+  app.setWeatherAlerts(severe_alerts);
 
-};
+  // Stop loading
+  app.stopLoading();
 
-
-/**
- * Updates the user's daily forecast in the app context with their location
- * @param location The user's location
- */
-export const getDailyForecast = async (location: any): Promise<void> => {
-  
-  const app = new App();
-  const api = new WeatherBitAPI(location.coordinates);
-  
-  // Get the data
-  const data: DailyForecastResponse = await api.dailyForecast();
-  
-  // Update context with the new data
-  app.setDailyForecast(data);   
-
-};
-
-
-/**
- * Updates the user's severe alerts in the app context with their location
- * @param location The user's location
- */
-export const getSevereAlerts = async (location: any): Promise<void> => {
-  
-  const app = new App();
-  const api = new WeatherBitAPI(location.coordinates);
-  
-  // Get the data
-  const data: SevereAlertsResponse = await api.weatherAlerts();
-  
-  // Update context with the new data
-  app.setWeatherAlerts(data);
-
-};
+}

@@ -3,7 +3,7 @@ import * as types from "./types";
 interface AppState {
   app?: {
     loading?: boolean,
-    ready?: boolean
+    menuOpen?: boolean
   }
   location?: {
     coordinates?: object
@@ -21,7 +21,7 @@ interface AppState {
 export const initialState: AppState = {
   app: {
     loading: false,
-    ready: false
+    menuOpen: false
   },
   location: {
     coordinates: {},
@@ -50,6 +50,16 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
         app: {
           ...state.app,
           loading: payload
+        }
+      }
+
+    // --- Set Menu Open ---
+    case types.MENU_TOGGLE: 
+      return {
+        ...state,
+        app: {
+          ...state.app,
+          menuOpen: payload
         }
       }
 

@@ -1,5 +1,6 @@
 export enum AppKeys {
-  search_history = 'search_history'
+  search_history = 'search_history',
+  coordinates = 'coordinates'
 }
 
 class Storage {

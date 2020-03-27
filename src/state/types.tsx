@@ -2,7 +2,7 @@ export type ContextType = string;
 
 // App
 export const LOADING: ContextType = '@app/loading';
-export const READY: ContextType = '@app/ready';
+export const MENU_TOGGLE: ContextType = '@app/menu';
 
 // Weather Details
 export const SET_DAILY_FORECAST: ContextType = '@weather/daily-forecast';

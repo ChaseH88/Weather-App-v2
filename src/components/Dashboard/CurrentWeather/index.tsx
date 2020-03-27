@@ -1,24 +1,23 @@
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useContext } from "react";
 import { State } from "../../../state";
-import { getCurrentWeather } from "../../../state/actions";
-import { useLocation } from "../../../hooks";
 import Loading from "../../../components/General/Loading";
+import { useApp } from "../../../hooks";
 
 const CurrentWeather: FC = (): JSX.Element => {
 
   // Grab the daily forecast data
   const [ { weatherDetails: { currentWeather }}] = useContext(State);
-  const location = useLocation();
-
-  useEffect(() => {
-    getCurrentWeather(location);
-  }, []);
+  const { loading } = useApp();
   
   // RENDER
-  if(currentWeather){
-    return <p>Ready</p>;
+  if(loading) return <Loading />;
+
+  if(!currentWeather){
+    return <p>NO DATA</p>;
   }
-  return <Loading />;
+  else {
+    return <p>DATA</p>
+  }
 };
 
 export default CurrentWeather;

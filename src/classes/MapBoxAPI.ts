@@ -44,7 +44,7 @@ class MapBoxAPI extends Dispatch {
     this.location = search;
   }
 
-  public async get(): Promise<LocationData | void> {
+  public async get(): Promise<LocationData> {
      
     // Search for the location
     const response = await this.Google(`/${this.location}.json?access_token=${this.key}`) as ApiResponse;
@@ -54,19 +54,19 @@ class MapBoxAPI extends Dispatch {
         !response ||
         response.status !== 200
     ){
-        return console.error('Error while searching for location.');
+        console.error('Error while searching for location.');
     }
 
     // The API returns locations that are in an array
     // Take the closest match (first) location and grab the coordinates
-    const location = response.data.features[0];
+    const location = await response.data.features[0];
     const [ lon, lat ] = location.center;
 
     // Grab the full location name and add to the app state
     this.dispatch({
       type: types.SET_FULL_LOCATION,
       payload: location.place_name
-    })
+    });
 
     // Return the data in an object so the Weather API can work with it
     return { lon, lat } as LocationData;

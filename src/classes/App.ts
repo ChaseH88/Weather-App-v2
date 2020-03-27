@@ -36,11 +36,24 @@ class App extends Dispatch {
   /**
    * Sets the app's global loading variable to false
    */
-  public stopLoading(){
+  public stopLoading(): void {
     this.dispatch({
       type: types.LOADING,
       payload: false
     });
+  }
+
+  /**
+   * Sets the app's menu to open/close
+   * @param open - Open/True or Closed/False
+   */
+  public menu(open: boolean): void {
+    
+    this.dispatch({
+      type: types.MENU_TOGGLE,
+      payload: open
+    });
+
   }
   
   /**

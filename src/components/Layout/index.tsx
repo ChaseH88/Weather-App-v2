@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,14 +19,22 @@ import DailyForecast from "../../components/Dashboard/DailyForecast";
 import CurrentWeather from "../../components/Dashboard/CurrentWeather";
 import SevereAlerts from "../Dashboard/SevereAlerts";
 
+// Actions
+import { menuToggle } from "../../state/actions";
+
 // Styles
 import { useStyles } from "./Dashboard_Styles";
 
 export default function Dashboard() {
+
+  // Dashboard Styles
   const classes:any = useStyles();
-  
-  const [open, setOpen] = useState(false);
-  const { ready } = useApp();
+
+  const handleMenuToggle = (open: boolean) => {
+    menuToggle(open)
+  }
+
+  const { menuOpen } = useApp();
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -35,17 +43,17 @@ export default function Dashboard() {
       <CssBaseline />
       <Header
         classes={classes}
-        openDrawer={() => setOpen(true)}
-        open={open}
+        openDrawer={() => handleMenuToggle(true)}
+        open={menuOpen}
       />
       <Drawer
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
         }}
-        open={open}
+        open={menuOpen}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={() => setOpen(false)}>
+          <IconButton onClick={() => handleMenuToggle(false)}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
@@ -61,18 +69,18 @@ export default function Dashboard() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={6} lg={5}>
               <Paper className={fixedHeightPaper}>
-                {ready && <CurrentWeather />}
+                <CurrentWeather />
               </Paper>
             </Grid>
             <Grid item xs={12} md={6} lg={7}>
               <Paper className={fixedHeightPaper}>
-                {ready && <DailyForecast />}
+                <DailyForecast />
               </Paper>
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                {ready && <SevereAlerts />}
+                <SevereAlerts />
               </Paper>
             </Grid>
           </Grid>

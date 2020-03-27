@@ -13,7 +13,7 @@ declare global {
  */
 class Dispatch {
 
-    public dispatch: DispatchType<{
+    protected dispatch: DispatchType<{
       type: types.ContextType,
       payload?: any
     }>;
@@ -23,6 +23,17 @@ class Dispatch {
       // logic found in the 'AppState' component
       // path: src\state\index.tsx
       this.dispatch = window.dispatch;
+    }
+
+    /**
+     * The generic dispatch function, can be used anywhere
+     * @param type 
+     * @param payload 
+     */
+    go(type: string, payload: any){
+      this.dispatch({
+        type, payload
+      })
     }
 
 }

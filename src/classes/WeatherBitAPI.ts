@@ -40,7 +40,7 @@ class WeatherBitAPI extends Dispatch {
   protected units: String = 'units=i';
 
   constructor(loc: LocationData, units?: String){
-    super()
+    super();
     this.location = this.formatLocation(loc);
     if(units){
       this.units = units;
