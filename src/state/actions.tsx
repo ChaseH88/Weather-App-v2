@@ -74,8 +74,8 @@ export const findUserLocation = async (): Promise<void> => {
   
   // Use the coordinates to lookup the city name
   const mapAPI = new MapBoxAPI(`${lon}, ${lat}`);
-  const location = await mapAPI.get()
-  debugger
+  const location = await mapAPI.get();
+  
   // Update the app location
   app.updateLocation(location as any);
 
