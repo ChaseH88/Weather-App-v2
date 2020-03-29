@@ -14,9 +14,15 @@ const AppState: FC = ({ children }: any): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    Object.defineProperty(window, 'dispatch', {
-      get: () => dispatch
-    });
+
+    const setValue = (key: any, name: string, value: any): void => (
+      Object.defineProperty(key, name, {
+        get: () => value
+      })
+    );
+
+    setValue(window, 'dispatch', dispatch);
+
   }, []);
 
   return(

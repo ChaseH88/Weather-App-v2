@@ -75,7 +75,7 @@ export const findUserLocation = async (): Promise<void> => {
   // Use the coordinates to lookup the city name
   const mapAPI = new MapBoxAPI(`${lon}, ${lat}`);
   const location = await mapAPI.get();
-  
+
   // Update the app location
   app.updateLocation(location as any);
 
@@ -88,6 +88,10 @@ export const findUserLocation = async (): Promise<void> => {
 }
 
 
+/**
+ * Fetches the api data and updates the context
+ * @param location An object containing the latitude and longitude
+ */
 const fetchWeatherData = async (location: { lat: any, lon: any }): Promise<void> => {
   
   // Initialize the main app class
@@ -96,22 +100,12 @@ const fetchWeatherData = async (location: { lat: any, lon: any }): Promise<void>
   // Grab Weather Data
   const api = new WeatherBitAPI(location);
   
-  let data = await Promise.all([
-    api.currentForecast(),
-    api.dailyForecast(),
-    api.weatherAlerts()
-   ]);
-debugger;
-  // Get the data
-  const current_weather  = data[0];
-  const daily_forecast   = data[1];
-  const severe_alerts    = data[2];
+  let data = await api.loadData();  
   
-  
-  // Update context with the new data
-  app.setCurrentForecast(current_weather);
-  app.setDailyForecast(daily_forecast);
-  app.setWeatherAlerts(severe_alerts);
+  // // Update context with the new data
+  app.setCurrentForecast(data.current_weather.data[0]);
+  app.setDailyForecast(data.daily_forecast);
+  app.setWeatherAlerts(data.severe_alerts);
 
   // Stop loading
   app.stopLoading();

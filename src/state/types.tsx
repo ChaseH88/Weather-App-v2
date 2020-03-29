@@ -4,6 +4,10 @@ export type ContextType = string;
 export const LOADING: ContextType = '@app/loading';
 export const MENU_TOGGLE: ContextType = '@app/menu';
 
+// Settings
+export const UPDATE_UNITS: ContextType = '@settings/units';
+export const DARK_MODE: ContextType = '@settings/toggle-dark-mode';
+
 // Weather Details
 export const SET_DAILY_FORECAST: ContextType = '@weather/daily-forecast';
 export const SET_WEATHER_ALERTS: ContextType = '@weather/severe-alerts';

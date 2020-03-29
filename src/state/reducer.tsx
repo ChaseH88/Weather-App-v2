@@ -1,9 +1,18 @@
 import * as types from "./types";
 
+enum Units {
+  imperial = 'imperial',
+  metric = 'metric'
+}
+
 interface AppState {
   app?: {
     loading?: boolean,
     menuOpen?: boolean
+  }
+  settings?: {
+    units?: Units,
+    darkMode?: boolean
   }
   location?: {
     coordinates?: object
@@ -22,6 +31,10 @@ export const initialState: AppState = {
   app: {
     loading: false,
     menuOpen: false
+  },
+  settings: {
+    units: Units.imperial,
+    darkMode: false
   },
   location: {
     coordinates: {},
@@ -73,6 +86,26 @@ export const reducer = (state: AppState, { type, payload }: Reducer): AppState =
         },
         app: {
           ...state.app
+        }
+      }
+
+    // --- Update App Settings - Units ---
+    case types.UPDATE_UNITS:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          units: payload
+        }
+      }
+
+    // --- Update App Settings - Units ---
+    case types.DARK_MODE:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          darkMode: payload
         }
       }
 

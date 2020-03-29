@@ -113,6 +113,24 @@ class WeatherBitAPI extends Dispatch {
     return response as unknown as SevereAlertsResponse;
   }
 
+  /**
+   * Load all of the weather information at once
+   */
+  async loadData(): Promise<any>{
+
+    let data = await Promise.all([
+      this.currentForecast(),
+      this.dailyForecast(),
+      this.weatherAlerts()
+     ]);
+
+     const current_weather: CurrentWeatherResponse  = data[0];
+     const daily_forecast: DailyForecastResponse    = data[1];
+     const severe_alerts: SevereAlertsResponse      = data[2];
+
+     return { current_weather, daily_forecast, severe_alerts };
+  }
+
 }
 
 export default WeatherBitAPI;
