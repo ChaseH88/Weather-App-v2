@@ -1,19 +1,19 @@
-import React, { FC, useContext } from "react";
-import { State } from "state";
-import { useApp } from "../../../hooks";
+import React, { FC } from "react";
+import { useApp, useSevereAlerts } from "../../../hooks";
 import Loading from "../../General/Loading";
 
 const SevereAlerts: FC = (): JSX.Element => {
 
-  // Grab the daily forecast data
-  const [ { weatherDetails: { severeAlerts }}] = useContext(State);
+  // Grab the Severe Alerts Data
+  const data = useSevereAlerts();
 
+  // Grab the loading variable
   const { loading } = useApp();
-  console.log(severeAlerts)
+  
   // RENDER
   if(loading) return <Loading />;
   
-  if(!severeAlerts){
+  if(!data){
     return <p>NO DATA</p>;
   }
   else {

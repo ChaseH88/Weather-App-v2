@@ -1,13 +1,12 @@
-import React, { FC, useContext } from "react";
-import { State } from "state";
+import React, { FC } from "react";
 import DailyForecast_Grid from "./DailyForecast_Grid";
 import Loading from "../../../components/General/Loading";
-import { useApp } from "../../../hooks";
+import { useApp, useDailyForecast } from "../../../hooks";
 
 const DailyForecast: FC = (): JSX.Element => {
 
   // Grab the daily forecast data
-  const [ { weatherDetails: { dailyForecast }}] = useContext(State);
+  const dailyForecast = useDailyForecast();
   const { loading } = useApp();
   
   // RENDER
@@ -17,7 +16,7 @@ const DailyForecast: FC = (): JSX.Element => {
     return <p>NO DATA</p>;
   }
   else {
-    return <DailyForecast_Grid data={dailyForecast.data} />;
+    return <DailyForecast_Grid data={dailyForecast} />;
   }
 };
 

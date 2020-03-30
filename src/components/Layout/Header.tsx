@@ -8,6 +8,7 @@ import clsx from 'clsx';
 
 // Components
 import { SearchBar } from "./SearchBar";
+import { DarkModeSwitch } from "./DarkModeSwitch";
 
 interface HeaderProps {
   classes: any
@@ -31,6 +32,7 @@ export const Header: FC<HeaderProps> = ({ classes, openDrawer, open }): JSX.Elem
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
           Dashboard
         </Typography>
+        <DarkModeSwitch />
         <SearchBar />
       </Toolbar>
     </AppBar>

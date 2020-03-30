@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 import {
-  CurrentWeatherResponse,
-  DailyForecastResponse,
-  SevereAlertsResponse
+  CurrentWeather,
+  DailyForecast,
+  SevereAlerts
 } from "../_types";
 import Dispatch from "./Dispatch";
 
@@ -74,7 +74,7 @@ class WeatherBitAPI extends Dispatch {
   /**
    * Gets the user's current forecast
    */
-  async currentForecast<T>(): Promise<CurrentWeatherResponse> {
+  async currentForecast<T>(): Promise<CurrentWeather> {
     
     let response = await this.Axios.get(
       `/current?${this.units}&${this.location}&key=${this.key}`
@@ -82,13 +82,13 @@ class WeatherBitAPI extends Dispatch {
 
     response = this.handleResponse(response);
     
-    return response as unknown as CurrentWeatherResponse;
+    return response as unknown as CurrentWeather;
   }
 
   /**
    * Gets the user's daily forecast
    */
-  async dailyForecast<T>(): Promise<DailyForecastResponse> {
+  async dailyForecast<T>(): Promise<DailyForecast> {
     
     let response = await this.Axios.get(
       `/forecast/daily?${this.units}&${this.location}&key=${this.key}`
@@ -96,13 +96,13 @@ class WeatherBitAPI extends Dispatch {
 
     response = this.handleResponse(response);
     
-    return response as unknown as DailyForecastResponse;
+    return response as unknown as DailyForecast;
   }
 
   /**
    * Gets the user's local weather alerts
    */
-  async weatherAlerts<T>(): Promise<SevereAlertsResponse> {
+  async weatherAlerts<T>(): Promise<SevereAlerts> {
     
     let response = await this.Axios.get(
       `/alerts?${this.units}&${this.location}&key=${this.key}`
@@ -110,7 +110,7 @@ class WeatherBitAPI extends Dispatch {
 
     response = this.handleResponse(response);
     
-    return response as unknown as SevereAlertsResponse;
+    return response as unknown as SevereAlerts;
   }
 
   /**
@@ -124,9 +124,9 @@ class WeatherBitAPI extends Dispatch {
       this.weatherAlerts()
      ]);
 
-     const current_weather: CurrentWeatherResponse  = data[0];
-     const daily_forecast: DailyForecastResponse    = data[1];
-     const severe_alerts: SevereAlertsResponse      = data[2];
+     const current_weather: CurrentWeather  = data[0];
+     const daily_forecast: DailyForecast    = data[1];
+     const severe_alerts: SevereAlerts      = data[2];
 
      return { current_weather, daily_forecast, severe_alerts };
   }

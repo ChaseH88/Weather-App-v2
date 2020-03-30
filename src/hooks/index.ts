@@ -1,13 +1,6 @@
-import { useLocation } from "./useLocation";
-import { useApp } from "./useApp";
-import { useCurrentWeather } from "./useCurrentWeather";
-import { useDailyForecast } from "./useDailyForecast";
-import { useSevereAlerts } from "./useSevereAlerts";
-
-export {
-  useLocation,
-  useApp,
-  useCurrentWeather,
-  useDailyForecast,
-  useSevereAlerts
-};
+export * from "./useLocation";
+export * from "./useApp";
+export * from "./useCurrentWeather";
+export * from "./useDailyForecast";
+export * from "./useSevereAlerts";
+export * from "./useSettings";

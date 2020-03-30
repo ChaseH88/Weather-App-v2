@@ -25,9 +25,9 @@ const Temperature: FC<TemperatureProps> = ({ temp, defaultUnit = MeasurementSyst
   }
 
   return(
-      <>
+      <span className="temperature">
         {temp_value}
-      </>
+      </span>
   );
 };
 

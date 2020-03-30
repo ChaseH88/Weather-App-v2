@@ -2,9 +2,9 @@ import * as types from "../state/types";
 import Dispatch from "./Dispatch";
 import { LocationData } from "./WeatherBitAPI";
 import {
-    DailyForecastResponse,
-    SevereAlertsResponse,
-    CurrentWeatherResponse
+    DailyForecast,
+    SevereAlerts,
+    CurrentWeather
 } from "../_types";
 
 
@@ -55,6 +55,19 @@ class App extends Dispatch {
     });
 
   }
+
+  /**
+   * Sets the app's dark mode to on or off
+   * @param on - On/True or Off/False
+   */
+  public darkMode(on: boolean): void {
+    
+    this.dispatch({
+      type: types.DARK_MODE,
+      payload: on
+    });
+
+  }
   
   /**
    * Update the user's location with coordinates
@@ -72,7 +85,7 @@ class App extends Dispatch {
    * Sets the daily forecast data to the app context.
    * @param data 
    */
-  public setDailyForecast(data: DailyForecastResponse): void {
+  public setDailyForecast(data: DailyForecast): void {
     this.dispatch({
         type: types.SET_DAILY_FORECAST,
         payload: data
@@ -83,7 +96,7 @@ class App extends Dispatch {
    * Sets the weather/severe alerts data to the app context.
    * @param data 
    */
-  public setWeatherAlerts(data: SevereAlertsResponse): void {
+  public setWeatherAlerts(data: SevereAlerts): void {
 
     this.dispatch({
       type: types.SET_WEATHER_ALERTS_COUNT,
@@ -101,7 +114,7 @@ class App extends Dispatch {
    * Sets the current forecast data to the app context.
    * @param data 
    */
-  public setCurrentForecast(data: CurrentWeatherResponse): void {
+  public setCurrentForecast(data: CurrentWeather): void {
     this.dispatch({
         type: types.SET_CURRENT_WEATHER,
         payload: data

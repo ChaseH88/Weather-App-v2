@@ -1,20 +1,39 @@
 import React, { FC } from "react";
-import { CurrentWeatherResponse } from "../../../_types";
+import { CurrentWeather } from "../../../_types";
 import WeatherIcon from "components/General/WeatherIcon";
 import Temperature from "components/General/Temperature";
+import "../../../styles/current-forecast.scss";
 
 interface CurrentOutlookProps {
-  data: CurrentWeatherResponse
+  data: CurrentWeather
 }
 
 const CurrentOutlook: FC<CurrentOutlookProps> = ({ data }): JSX.Element => {
   
   // RENDER
   return(
-    <div>
-      <p>{data.city_name}</p>
-      <WeatherIcon data={data.weather} />
-      <Temperature temp={data.temp} />
+    <div id="current-outlook">
+      <h1>{data.city_name}, {data.state_code}</h1>
+      <div className="wrapper">
+        <div className="left">
+          <div className="feature">
+            <div className="temperature">
+              <div className="temp-now">
+                <Temperature temp={data.temp} />
+              </div>
+              <div className='feels-like'>
+                <span className='sub-title'>Feels Like</span>
+                <Temperature temp={data.app_temp} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="right">
+          <div className="image">
+            <WeatherIcon data={data.weather} /> 
+          </div>
+        </div>
+      </div>
     </div>
   )
 };

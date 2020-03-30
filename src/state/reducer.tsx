@@ -6,20 +6,20 @@ enum Units {
 }
 
 interface AppState {
-  app?: {
+  app: {
     loading?: boolean,
     menuOpen?: boolean
   }
-  settings?: {
+  settings: {
     units?: Units,
     darkMode?: boolean
   }
-  location?: {
+  location: {
     coordinates?: object
     fullLocation?: string | null,
     zipcode?: number | null
   },
-  weatherDetails?: {
+  weatherDetails: {
     currentWeather?: object | null,
     dailyForecast?: object | null,
     severeAlerts?: object | null,
@@ -27,6 +27,9 @@ interface AppState {
   }
 }
 
+/**
+ * The default app state
+ */
 export const initialState: AppState = {
   app: {
     loading: false,
@@ -48,12 +51,17 @@ export const initialState: AppState = {
   }
 }
 
-interface Reducer {
-  type: string,
+interface Action {
+  type: types.ContextType,
   payload: any
 }
 
-export const reducer = (state: AppState, { type, payload }: Reducer): AppState => {
+/**
+ * The main context reducer to control app state changes
+ * @param state - The main app state
+ * @param {Action} - Includes the action name and payload
+ */
+export const reducer = (state: AppState, { type, payload }: Action): AppState => {
   switch (type) {
 
     // --- Set Global Loading ---

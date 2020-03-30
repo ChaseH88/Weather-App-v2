@@ -1,0 +1,51 @@
+$grey: #6b6b6b;
+
+#current-outlook {
+    
+    & h1 {
+        font-size: 1.75em;
+        margin: 0;
+    }
+
+    & div.wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        & > div {
+            flex: 1 1 50%;
+        }
+    }
+    
+    & div.feature {
+        
+        & > div.temperature {
+            display: flex;
+            flex-wrap: nowrap;
+            
+            & > div {                
+                    
+                & div.feels-like {
+                    text-align: center;                        
+                    & > span {
+                        display: block;
+                        
+                        &.sub-title {
+                            font-size: .75em;
+                            color: $grey;
+                            text-transform: uppercase;
+                            font-weight: bold;
+                        }
+                        &.temperature {
+                            color: $grey;
+                            font-size: 1.75em;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

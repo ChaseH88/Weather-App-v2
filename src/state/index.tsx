@@ -11,18 +11,20 @@ declare global {
 export const State = React.createContext<Array<any>>([]);
 
 const AppState: FC = ({ children }: any): JSX.Element => {
+
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  useEffect(() => {
+  /**
+   * Adds a property to the window object for use.
+   * @param name Name of the key to add
+   * @param value The value of your key
+   */
+  const setValue = (name: string, value: any): void => (
+    window[name as any] = value
+  );
 
-    const setValue = (key: any, name: string, value: any): void => (
-      Object.defineProperty(key, name, {
-        get: () => value
-      })
-    );
-
-    setValue(window, 'dispatch', dispatch);
-
+  useEffect(() => {    
+    setValue('dispatch', dispatch);
   }, []);
 
   return(

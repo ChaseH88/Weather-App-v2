@@ -21,6 +21,21 @@ export const menuToggle = (open: boolean): void => {
 }
 
 /**
+ * Toggle dark mode setting
+ * @param on - On/True or Off/False
+ */
+export const darkModeToggle = (on: boolean): void => {
+
+  // Save the selection to storage
+  const storage = new Storage();
+  storage.add(AppKeys.dark_mode, on);
+
+  const app = new App();
+  app.darkMode(on);
+  
+}
+
+/**
  * Takes user input and set coordinates of that location in the app context.
  * @param searchWord The users search input
  */

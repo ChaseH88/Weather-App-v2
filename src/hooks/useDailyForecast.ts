@@ -1,18 +1,14 @@
 import { useContext } from "react";
 import { State } from "state";
+import { DailyForecast } from "../_types";
 
-interface UseDailyForecast {
-  weatherDetails?: {
-    dailyForecase: number
-  }
-}
-
-const useDailyForecast = (): UseDailyForecast => {
+const useDailyForecast = (): DailyForecast | null => {
 
   // Grab the daily forecast data
   const [ { weatherDetails: { dailyForecast } }] = useContext(State);
 
-  return dailyForecast;
+  if(!dailyForecast) return null;
+  return dailyForecast as DailyForecast;
   
 };
 

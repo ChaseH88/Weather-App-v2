@@ -1,49 +1,57 @@
-export interface DailyForecastResponse {
-  moonrise_ts: number
-  wind_cdir: string
-  rh: number
-  pres: number
-  high_temp: number
-  sunset_ts: number
-  ozone: number
-  moon_phase: number
-  wind_gust_spd: number
-  snow_depth: number
-  clouds: number
-  ts: number
-  sunrise_ts: number
-  app_min_temp: number
-  wind_spd: number
-  pop: number
-  wind_cdir_full: string
-  slp: number
-  valid_date: string
-  app_max_temp: number
-  vis: number
-  dewpt: number
-  snow: number
-  uv: number
-  weather: {
-      icon: string
-      code: number
-      description: string
-  },
-  wind_dir: number,
-  max_dhi: number | null,
-  clouds_hi: number,
-  precip: number,
-  low_temp: number,
-  max_temp: number,
-  moonset_ts: number,
-  datetime: string,
-  temp: number,
-  min_temp: number,
-  clouds_mid: number
-  clouds_low: number
+export interface DailyForecast {
+  city_name: string
+  lon: number
+  timezone: string
+  lat: number
+  country_code: string
+  state_code: string
+  data: {
+    moonrise_ts: number
+    wind_cdir: string
+    rh: number
+    pres: number
+    high_temp: number
+    sunset_ts: number
+    ozone: number
+    moon_phase: number
+    wind_gust_spd: number
+    snow_depth: number
+    clouds: number
+    ts: number
+    sunrise_ts: number
+    app_min_temp: number
+    wind_spd: number
+    pop: number
+    wind_cdir_full: string
+    slp: number
+    valid_date: string
+    app_max_temp: number
+    vis: number
+    dewpt: number
+    snow: number
+    uv: number
+    weather: {
+        icon: string
+        code: number
+        description: string
+    },
+    wind_dir: number,
+    max_dhi: number | null,
+    clouds_hi: number,
+    precip: number,
+    low_temp: number,
+    max_temp: number,
+    moonset_ts: number,
+    datetime: string,
+    temp: number,
+    min_temp: number,
+    clouds_mid: number
+    clouds_low: number
+  }[]
 }
 
 
-export interface CurrentWeatherResponse {
+export interface CurrentWeather {
     rh: number
     pod: string
     lon: number
@@ -88,7 +96,7 @@ export interface CurrentWeatherResponse {
 }
 
 
-export interface SevereAlertsResponse {
+export interface SevereAlerts {
   country_code: string,
   lon: number,
   timezone: string,
