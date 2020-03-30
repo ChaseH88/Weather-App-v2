@@ -28,6 +28,11 @@ interface AppState {
 }
 
 /**
+ * App Debug Mode
+ */
+const debugMode: boolean = true;
+
+/**
  * The default app state
  */
 export const initialState: AppState = {
@@ -44,10 +49,10 @@ export const initialState: AppState = {
     fullLocation: null
   },
   weatherDetails: {
-    currentWeather: null,
-    dailyForecast: null,
-    severeAlerts: null,
-    severeAlertsCount: 0
+    currentWeather: debugMode ? require('../json/current-weather.json') : null,
+    dailyForecast: debugMode ? require('../json/daily-forecast.json') : null,
+    severeAlerts: debugMode ? require('../json/severe-alerts.json') : null,
+    severeAlertsCount: 1
   }
 }
 
