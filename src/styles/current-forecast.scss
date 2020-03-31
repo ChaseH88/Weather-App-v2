@@ -1,51 +1,73 @@
 $grey: #6b6b6b;
 
 #current-outlook {
+    overflow: hidden;
     
     & h1 {
         font-size: 1.75em;
         margin: 0;
     }
-
+    
     & div.wrapper {
         display: flex;
-        flex-wrap: nowrap;
         align-items: center;
-
+        justify-content: space-around;
+        height: 100%;
+        
         & > div {
             flex: 1 1 50%;
+            text-align: center;
+        }
+    }
+
+    & div.icon {
+        img {
+            width: 70%;
+        }
+    }
+
+    & div.description {
+        position: relative;
+        bottom: 30px;
+
+        & span {
+            font-size: 1.15em;
+            font-style: italic;
+            opacity: .8;
         }
     }
     
-    & div.feature {
+    & div.temperature {
+        margin: 0 0 25px;
         
-        & > div.temperature {
-            display: flex;
-            flex-wrap: nowrap;
+        & div.temp-now {
+            border-bottom: 1px solid;
+            margin: 0 0 8px;
             
-            & > div {                
-                    
-                & div.feels-like {
-                    text-align: center;                        
-                    & > span {
-                        display: block;
-                        
-                        &.sub-title {
-                            font-size: .75em;
-                            color: $grey;
-                            text-transform: uppercase;
-                            font-weight: bold;
-                        }
-                        &.temperature {
-                            color: $grey;
-                            font-size: 1.75em;
-                            font-weight: bold;
-                        }
-                    }
-                }
+            & span {
+                font-size: 5em;
+                line-height: normal;
+                font-weight: bold;
             }
         }
         
+        & div.feels-like {
+            
+            & span {
+                display: block;
+                
+                &.sub-title {
+                    font-size: .8em;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+                &.temperature {
+                    font-size: 2em;
+                    line-height: normal;
+                    font-weight: bold;
+                }
+            }
+        }
     }
     
 }

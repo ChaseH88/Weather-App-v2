@@ -1,32 +1,18 @@
 import React, { FC } from "react";
-
-export enum MeasurementSystems {
-  fahrenheit = 'fahrenheit',
-  celsius = 'celsius'
-}
+import { useTemperature } from "../../hooks";
 
 type TemperatureProps = {
   temp: number
-  defaultUnit?: MeasurementSystems
 };
 
-/**
- * 
- * @param param0 
- */
-const Temperature: FC<TemperatureProps> = ({ temp, defaultUnit = MeasurementSystems.fahrenheit }): any => {
+const Temperature: FC<TemperatureProps> = ({ temp }): any => {
 
   // Grab the temperature
-  let temp_value = temp;
-
-  // See if it needs to be converted
-  if(defaultUnit === MeasurementSystems.celsius){
-    temp_value = (5/9) * (temp - 32)
-  }
+  let [temperature, change] = useTemperature(temp);
 
   return(
-      <span className="temperature">
-        {temp_value}
+      <span className="temperature" onClick={() => change()}>
+        {temperature}&deg;
       </span>
   );
 };

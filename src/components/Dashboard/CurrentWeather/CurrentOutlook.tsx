@@ -16,21 +16,22 @@ const CurrentOutlook: FC<CurrentOutlookProps> = ({ data }): JSX.Element => {
       <h1>{data.city_name}, {data.state_code}</h1>
       <div className="wrapper">
         <div className="left">
-          <div className="feature">
-            <div className="temperature">
-              <div className="temp-now">
-                <Temperature temp={data.temp} />
-              </div>
-              <div className='feels-like'>
-                <span className='sub-title'>Feels Like</span>
-                <Temperature temp={data.app_temp} />
-              </div>
-            </div>
+          <div className="icon">
+            <WeatherIcon data={data.weather} /> 
+          </div>
+          <div className="description">
+            <span>{data.weather.description}</span>
           </div>
         </div>
         <div className="right">
-          <div className="image">
-            <WeatherIcon data={data.weather} /> 
+          <div className="temperature">
+            <div className="temp-now">
+              <Temperature temp={data.temp} />
+            </div>
+            <div className='feels-like'>
+              <span className='sub-title'>Feels Like</span>
+              <Temperature temp={data.app_temp} />
+            </div>
           </div>
         </div>
       </div>

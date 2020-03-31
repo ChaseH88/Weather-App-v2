@@ -26,6 +26,9 @@ export const SearchBar: FC = (): JSX.Element => {
         onChange={({ target }) => {
           setSearch(target.value);
         }}
+        onKeyDown={({ keyCode }) => {
+           if(keyCode === 13) searchLocation(search);
+        }}
       />
       <IconButton color="inherit" onClick={() => searchLocation(search)}>
         <SearchIcon />

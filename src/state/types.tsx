@@ -7,6 +7,7 @@ export const MENU_TOGGLE: ContextType = '@app/menu';
 // Settings
 export const UPDATE_UNITS: ContextType = '@settings/units';
 export const DARK_MODE: ContextType = '@settings/toggle-dark-mode';
+export const UPDATE_TEMP_MEASUREMENT: ContextType = '@settings/temperature';
 
 // Weather Details
 export const SET_DAILY_FORECAST: ContextType = '@weather/daily-forecast';

@@ -5,6 +5,11 @@ enum Units {
   metric = 'metric'
 }
 
+export enum Temperatures {
+  fahrenheit = 'fahrenheit',
+  celsius = 'celsius'
+}
+
 interface AppState {
   app: {
     loading?: boolean,
@@ -12,10 +17,11 @@ interface AppState {
   }
   settings: {
     units?: Units,
+    temperature?: Temperatures,
     darkMode?: boolean
   }
   location: {
-    coordinates?: object
+    coordinates?: object,
     fullLocation?: string | null,
     zipcode?: number | null
   },
@@ -31,6 +37,9 @@ interface AppState {
  * App Debug Mode
  */
 const debugMode: boolean = true;
+const testFile = (name: string) => (
+  require(`../json/${name}.json`)
+);
 
 /**
  * The default app state
@@ -42,6 +51,7 @@ export const initialState: AppState = {
   },
   settings: {
     units: Units.imperial,
+    temperature: Temperatures.fahrenheit,
     darkMode: false
   },
   location: {
@@ -49,9 +59,9 @@ export const initialState: AppState = {
     fullLocation: null
   },
   weatherDetails: {
-    currentWeather: debugMode ? require('../json/current-weather.json') : null,
-    dailyForecast: debugMode ? require('../json/daily-forecast.json') : null,
-    severeAlerts: debugMode ? require('../json/severe-alerts.json') : null,
+    currentWeather: debugMode ? testFile('current-weather') : null,
+    dailyForecast: debugMode ? testFile('daily-forecast') : null,
+    severeAlerts: debugMode ? testFile('severe-alerts') : null,
     severeAlertsCount: 1
   }
 }
@@ -112,13 +122,23 @@ export const reducer = (state: AppState, { type, payload }: Action): AppState =>
         }
       }
 
-    // --- Update App Settings - Units ---
+    // --- Update App Settings - Dark Mode ---
     case types.DARK_MODE:
       return {
         ...state,
         settings: {
           ...state.settings,
           darkMode: payload
+        }
+      }
+
+    // --- Update App Settings - Dark Mode ---
+    case types.UPDATE_TEMP_MEASUREMENT:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          temperature: payload
         }
       }
 

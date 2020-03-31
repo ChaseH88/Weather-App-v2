@@ -1,3 +1,4 @@
+import { Temperatures } from "../state/reducer";
 import * as types from "../state/types";
 import Dispatch from "./Dispatch";
 import { LocationData } from "./WeatherBitAPI";
@@ -65,6 +66,19 @@ class App extends Dispatch {
     this.dispatch({
       type: types.DARK_MODE,
       payload: on
+    });
+
+  }
+
+  /**
+   * Sets the app's dark mode to on or off
+   * @param on - On/True or Off/False
+   */
+  public setTempMeasurements(measurement: Temperatures): void {
+    
+    this.dispatch({
+      type: types.UPDATE_TEMP_MEASUREMENT,
+      payload: measurement
     });
 
   }
