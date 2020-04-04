@@ -1,5 +1,5 @@
 import { Dispatch as DispatchType } from "react";
-import * as types from "../state/types";
+import * as types from "state/types";
 
 declare global {
   interface Window {

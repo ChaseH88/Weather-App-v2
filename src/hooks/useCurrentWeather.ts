@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { State } from "../state";
+import { State } from "state";
 
 interface UseCurrentWeather {
   weatherDetails?: {

@@ -5,15 +5,15 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { useDrawer } from "../../hooks";
+import { useDrawer } from "hooks";
 
 // Components
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import Drawer from "./Drawer";
-import DailyForecast from "../../components/Dashboard/DailyForecast";
-import CurrentWeather from "../../components/Dashboard/CurrentWeather";
-import SevereAlerts from "../Dashboard/SevereAlerts";
+import DailyForecast from "components/Dashboard/DailyForecast";
+import CurrentWeather from "components/Dashboard/CurrentWeather";
+import SevereAlerts from "components/Dashboard/SevereAlerts";
 
 // Styles
 import { useStyles } from "./Dashboard_Styles";

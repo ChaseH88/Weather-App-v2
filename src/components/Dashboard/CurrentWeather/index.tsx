@@ -1,7 +1,7 @@
 import React, { FC, useContext } from "react";
-import { State } from "../../../state";
-import Loading from "../../../components/General/Loading";
-import { useApp } from "../../../hooks";
+import { State } from "state";
+import Loading from "components/General/Loading";
+import { useApp } from "hooks";
 import CurrentOutlook from "./CurrentOutlook";
 
 const CurrentWeather: FC = (): JSX.Element => {

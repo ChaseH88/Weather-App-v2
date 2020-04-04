@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Switch from '@material-ui/core/Switch';
-import { useSettings } from "../../hooks/useSettings";
-import { darkModeToggle } from "../../state/actions";
+import { useSettings } from "hooks";
+import { darkModeToggle } from "state/actions";
 
 const DarkModeSwitch: FC = (): JSX.Element => {
   

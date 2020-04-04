@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { State } from "state";
-import { MENU_TOGGLE } from "../state/types";
+import { MENU_TOGGLE } from "state/types";
 
 /**
  * The hook will give you the menu boolean and let you toggle it.

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { CurrentWeather } from "../../../_types";
 import WeatherIcon from "components/General/WeatherIcon";
 import Temperature from "components/General/Temperature";
-import "../../../styles/current-forecast.scss";
+import "styles/current-forecast.scss";
 
 interface CurrentOutlookProps {
   data: CurrentWeather

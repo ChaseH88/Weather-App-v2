@@ -1,8 +1,8 @@
-import { getLocation } from "../utilities/get-location";
-import WeatherBitAPI from "../classes/WeatherBitAPI";
-import App from "../classes/App";
-import MapBoxAPI from "../classes/MapBoxAPI";
-import Storage, { AppKeys } from "../classes/Storage";
+import { getLocation } from "utilities/get-location";
+import WeatherBitAPI from "classes/WeatherBitAPI";
+import App from "classes/App";
+import MapBoxAPI from "classes/MapBoxAPI";
+import Storage, { AppKeys } from "classes/Storage";
 
 interface Location {
   lat: number,

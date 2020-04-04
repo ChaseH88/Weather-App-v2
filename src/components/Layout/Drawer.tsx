@@ -5,8 +5,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import IconButton from '@material-ui/core/IconButton';
-import { useDrawer, useSevereAlerts } from "../../hooks";
-import "../../styles/drawer.scss";
+import { useDrawer, useSevereAlerts } from "hooks";
+import "styles/drawer.scss";
 
 interface DrawerProps {
   styles: {

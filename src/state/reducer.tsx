@@ -1,7 +1,7 @@
 import * as types from "./types";
 
 // Typescript
-import { Units, Temperatures } from "../types";
+import { Units, Temperatures } from "@types";
 
 interface AppState {
   app: {

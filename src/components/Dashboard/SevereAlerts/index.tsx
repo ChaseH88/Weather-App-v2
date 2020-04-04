@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { useApp, useSevereAlerts } from "../../../hooks";
-import Loading from "../../General/Loading";
+import { useApp, useSevereAlerts } from "hooks";
+import Loading from "components/General/Loading";
 
 const SevereAlerts: FC = (): JSX.Element => {
 

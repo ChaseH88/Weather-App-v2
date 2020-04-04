@@ -1,5 +1,5 @@
-import { Temperatures } from "../types";
-import * as types from "../state/types";
+import { Temperatures } from "@types";
+import * as types from "state/types";
 import Dispatch from "./Dispatch";
 import { LocationData } from "./WeatherBitAPI";
 import {

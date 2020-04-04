@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { State } from "state";
-import { Temperatures } from "../types";
-import { UPDATE_TEMP_MEASUREMENT } from "../state/types";
+import { Temperatures } from "@types";
+import { UPDATE_TEMP_MEASUREMENT } from "state/types";
 
 /**
  * The hook will render a temperature in fahrenheit or celsius.

@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import Switch from '@material-ui/core/Switch';
-import { useSettings, useTemperature } from "../../hooks";
+import { useSettings, useTemperature } from "hooks";
 
 // Typescript
-import { Temperatures } from "../../types";
+import { Temperatures } from "@types";
 
 const TemperatureSwitch: FC = (): JSX.Element => {
 

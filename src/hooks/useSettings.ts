@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { State } from "state";
 
 // Typescript
-import { Temperatures } from "../types";
+import { Temperatures } from "@types";
 
 interface UseSettings {
   units: string,

@@ -2,8 +2,8 @@ import React, { FC, useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-import { findUserLocation, searchLocation } from "../../state/actions";
-import { useDrawer, useSevereAlerts } from "../../hooks";
+import { findUserLocation, searchLocation } from "state/actions";
+import { useDrawer, useSevereAlerts } from "hooks";
 
 // Styles
 import "styles/search-bar.scss";

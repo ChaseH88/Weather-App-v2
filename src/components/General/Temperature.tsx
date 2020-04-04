@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useTemperature } from "../../hooks";
+import { useTemperature } from "hooks";
 
 type TemperatureProps = {
   temp: number

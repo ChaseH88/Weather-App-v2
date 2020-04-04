@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import * as types from "../state/types";
+import * as types from "state/types";
 import Dispatch from "./Dispatch";
 
 interface LocationData {

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import "styles/daily-forecast.scss";
-import { key } from "../../../utilities/key";
+import { key } from "utilities/key";
 import moment from "moment";
-import WeatherIcon from "../../General/WeatherIcon";
+import WeatherIcon from "components/General/WeatherIcon";
 import Temperature from "components/General/Temperature";
 import { DailyForecast } from "../../../_types";
 

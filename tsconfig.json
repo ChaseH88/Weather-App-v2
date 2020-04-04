@@ -14,12 +14,12 @@
     "outDir": "build",
     "lib": ["es6", "es7", "dom"],
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
-      "Types": ["./_types"],
-      "classes/*": ["./src/classes/"],
+      "@types": ["./types"],
+      "classes/*": ["./classes/*"],
       "components/*": ["./components/*"],
-      "hooks/*": ["./src/hooks/*"],
+      "hooks": ["./hooks"],
       "state/*": ["./state/*"],
       "styles/*": ["./styles/*"],
       "utilities/*": ["./utilities/*"]

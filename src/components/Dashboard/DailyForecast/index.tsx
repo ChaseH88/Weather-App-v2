@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import DailyForecast_Grid from "./DailyForecast_Grid";
-import Loading from "../../../components/General/Loading";
-import { useApp, useDailyForecast } from "../../../hooks";
+import Loading from "components/General/Loading";
+import { useApp, useDailyForecast } from "hooks";
 
 const DailyForecast: FC = (): JSX.Element => {
 

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "../../styles/loading.scss";
+import "styles/loading.scss";
 
 const Loading: FC = (): JSX.Element => (
     <div id="loader">
