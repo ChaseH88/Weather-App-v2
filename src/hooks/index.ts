@@ -5,3 +5,4 @@ export * from "./useDailyForecast";
 export * from "./useSevereAlerts";
 export * from "./useSettings";
 export * from "./useTemperature";
+export * from "./useDrawer";

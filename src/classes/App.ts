@@ -45,19 +45,6 @@ class App extends Dispatch {
   }
 
   /**
-   * Sets the app's menu to open/close
-   * @param open - Open/True or Closed/False
-   */
-  public menu(open: boolean): void {
-    
-    this.dispatch({
-      type: types.MENU_TOGGLE,
-      payload: open
-    });
-
-  }
-
-  /**
    * Sets the app's dark mode to on or off
    * @param on - On/True or Off/False
    */

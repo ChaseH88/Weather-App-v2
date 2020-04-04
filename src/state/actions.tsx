@@ -10,17 +10,6 @@ interface Location {
 }
 
 /**
- * Open or close the menu
- * @param open Open or closed
- */
-export const menuToggle = (open: boolean): void => {
-
-  const app = new App();
-  app.menu(open);
-  
-}
-
-/**
  * Toggle dark mode setting
  * @param on - On/True or Off/False
  */

@@ -4,6 +4,7 @@ import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import { findUserLocation, searchLocation } from "../../state/actions";
 import { State } from "../../state";
+import { useDrawer } from "../../hooks";
 
 // Styles
 import "styles/search-bar.scss";
@@ -17,6 +18,8 @@ export const SearchBar: FC = (): JSX.Element => {
 
   const [search, setSearch] = useState("");
   const [{ weatherDetails: { severeAlertsCount } }] = useContext(State);
+
+  const [, menuToggle] = useDrawer();
 
   return(
     <div id="search">
@@ -36,7 +39,7 @@ export const SearchBar: FC = (): JSX.Element => {
       <IconButton color="inherit" onClick={() => findUserLocation()}>
         <MyLocationIcon />
       </IconButton>
-      <IconButton color="inherit">
+      <IconButton color="inherit" onClick={() => menuToggle()}>
         <Badge badgeContent={severeAlertsCount} color="secondary">
           <NotificationsIcon />
         </Badge>
