@@ -1,0 +1,12 @@
+@import "./_main";
+
+#drawer {
+
+
+    & div.alerts > div {
+
+        & ul {
+            padding: 0 10px;
+        }
+    }
+}

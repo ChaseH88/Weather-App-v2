@@ -1,14 +1,21 @@
-// ---- GLOBAL VARIABLES ----
+// ---- COLOR VARIABLES ----
 $textColor: #fff;
+$grey: #6b6b6b;
+
+// ---- LOADING VARIABLES ---
+$circleColor: #3f51b5;
+$circleSize: 50px;
+$borderSize: 4px;
 
 body {
   color: $textColor;
   
 }
 
-
-
-
+// Text
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
 
 #background {
   background-image: url("../images/clouds-background.jpg");

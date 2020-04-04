@@ -1,6 +1,4 @@
-$circleColor: #3f51b5;
-$circleSize: 50px;
-$borderSize: 4px;
+@import "./_main";
 
 @mixin size() {
     height: $circleSize;

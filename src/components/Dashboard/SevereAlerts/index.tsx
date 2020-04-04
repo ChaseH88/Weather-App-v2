@@ -5,7 +5,7 @@ import Loading from "../../General/Loading";
 const SevereAlerts: FC = (): JSX.Element => {
 
   // Grab the Severe Alerts Data
-  const data = useSevereAlerts();
+  const [ data ] = useSevereAlerts();
 
   // Grab the loading variable
   const { loading } = useApp();

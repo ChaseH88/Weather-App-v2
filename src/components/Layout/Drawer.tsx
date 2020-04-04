@@ -5,7 +5,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import IconButton from '@material-ui/core/IconButton';
-import { useDrawer } from "../../hooks"
+import { useDrawer, useSevereAlerts } from "../../hooks";
+import "../../styles/drawer.scss";
 
 interface DrawerProps {
   styles: {
@@ -18,9 +19,11 @@ interface DrawerProps {
 const DrawerComponent: FC<DrawerProps> = ({ styles }): JSX.Element => {
 
   const [ open, toggleMenu ] = useDrawer();
-
+  const [ data, count ] = useSevereAlerts();
+  
   return (
     <Drawer
+      id="drawer"
       classes={{
           paper: clsx(styles.drawerPaper, !open && styles.drawerPaperClose),
       }}
@@ -31,10 +34,23 @@ const DrawerComponent: FC<DrawerProps> = ({ styles }): JSX.Element => {
           <ChevronLeftIcon />
         </IconButton>
       </div>
-      <Divider />
-      <List>List Item</List>
-      <Divider />
-      <List>List Item</List>
+      <div>
+        <div className="heading">
+          Showing <strong>{count}</strong> alert{count > 1 && 's'}:
+        </div>
+        <div className="alerts">
+          {data.alerts.map(alert => (
+            <div className={alert.severity.toLowerCase()}>
+              <List>
+                <h3>{alert.title}</h3>
+                <p>{alert.description}</p>
+                <Divider />
+              </List>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </Drawer>
   );
 }

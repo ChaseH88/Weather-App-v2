@@ -13,6 +13,16 @@
         "severity": "Watch",
         "title": "Rip Current Statement issued March 29 at 12:07PM CDT until March 30 at 6:00AM CDT by NWS Mobile AL",
         "expires_local": "2020-03-30T11:00:00"
+    },{
+        "regions": ["Baldwin Coastal", " Okaloosa Coastal", " Escambia Coastal", " Santa Rosa Coastal", " Mobile Coastal"],
+        "expires_utc": "2020-03-30T16:00:00",
+        "effective_local": "2020-03-29T17:07:00",
+        "uri": "https://api.weather.gov/alerts/NWS-IDP-PROD-4125562-3496797",
+        "description": "* WHAT...Dangerous rip currents are expected.\n\n* WHERE...In Alabama, Baldwin Coastal and Mobile Coastal\nCounties. In Florida, Santa Rosa Coastal, Okaloosa Coastal and\nEscambia Coastal Counties.\n\n* WHEN...Now through late tonight.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
+        "effective_utc": "2020-03-29T22:07:00",
+        "severity": "Watch",
+        "title": "Rip Current Statement issued March 29 at 12:07PM CDT until March 30 at 6:00AM CDT by NWS Mobile AL",
+        "expires_local": "2020-03-30T11:00:00"
     }],
     "city_name": "Spanish Fort",
     "state_code": "AL"

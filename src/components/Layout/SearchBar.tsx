@@ -1,10 +1,9 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import { findUserLocation, searchLocation } from "../../state/actions";
-import { State } from "../../state";
-import { useDrawer } from "../../hooks";
+import { useDrawer, useSevereAlerts } from "../../hooks";
 
 // Styles
 import "styles/search-bar.scss";
@@ -17,8 +16,7 @@ import MyLocationIcon from '@material-ui/icons/MyLocation';
 export const SearchBar: FC = (): JSX.Element => {
 
   const [search, setSearch] = useState("");
-  const [{ weatherDetails: { severeAlertsCount } }] = useContext(State);
-
+  const [, count] = useSevereAlerts();
   const [, menuToggle] = useDrawer();
 
   return(
@@ -39,8 +37,14 @@ export const SearchBar: FC = (): JSX.Element => {
       <IconButton color="inherit" onClick={() => findUserLocation()}>
         <MyLocationIcon />
       </IconButton>
-      <IconButton color="inherit" onClick={() => menuToggle()}>
-        <Badge badgeContent={severeAlertsCount} color="secondary">
+      <IconButton
+        color="inherit"
+        title={count === 0 ? 'No Alerts' : `${count} Alerts`}
+        onClick={() => {
+          if(count === 0) return;
+          menuToggle();
+        }}>
+        <Badge badgeContent={count} color="secondary">
           <NotificationsIcon />
         </Badge>
       </IconButton>

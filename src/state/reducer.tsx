@@ -62,7 +62,7 @@ export const initialState: AppState = {
     currentWeather: debugMode ? testFile('current-weather') : null,
     dailyForecast: debugMode ? testFile('daily-forecast') : null,
     severeAlerts: debugMode ? testFile('severe-alerts') : null,
-    severeAlertsCount: 1
+    severeAlertsCount: 2
   }
 }
 

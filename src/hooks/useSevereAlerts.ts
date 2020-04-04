@@ -1,18 +1,20 @@
 import { useContext } from "react";
 import { State } from "state";
+import { SevereAlerts } from "../_types";
 
-interface UseSevereAlerts {
-  weatherDetails?: {
-    currentWeather: number
-  }
-}
+type UseSevereAlerts = [SevereAlerts, number];
 
 const useSevereAlerts = (): UseSevereAlerts => {
 
   // Grab the daily forecast data
-  const [ { weatherDetails: { severeAlerts } }] = useContext(State);
+  const [ { weatherDetails: {
+    severeAlerts, severeAlertsCount
+  } }] = useContext(State);
 
-  return severeAlerts;
+  const data: SevereAlerts = severeAlerts;
+  const count: number = severeAlertsCount;
+
+  return [data, count];
   
 };
 
