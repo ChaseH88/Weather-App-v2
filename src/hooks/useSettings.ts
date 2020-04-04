@@ -1,9 +1,13 @@
 import { useContext } from "react";
 import { State } from "state";
 
+// Typescript
+import { Temperatures } from "../types";
+
 interface UseSettings {
   units: string,
-  darkMode: boolean
+  darkMode: boolean,
+  temperature: Temperatures
 }
 
 const useSettings = (): UseSettings => {

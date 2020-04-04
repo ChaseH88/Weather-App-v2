@@ -7,6 +7,7 @@ import clsx from 'clsx';
 // Components
 import { SearchBar } from "./SearchBar";
 import { DarkModeSwitch } from "./DarkModeSwitch";
+import { TemperatureSwitch } from "./TemperatureSwitch";
 
 interface HeaderProps {
   classes: any
@@ -19,6 +20,7 @@ export const Header: FC<HeaderProps> = ({ classes, open }): JSX.Element => (
       <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
         Dashboard
       </Typography>
+      <TemperatureSwitch />
       <DarkModeSwitch />
       <SearchBar />
     </Toolbar>

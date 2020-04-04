@@ -1,4 +1,4 @@
-import { Temperatures } from "../state/reducer";
+import { Temperatures } from "../types";
 import * as types from "../state/types";
 import Dispatch from "./Dispatch";
 import { LocationData } from "./WeatherBitAPI";

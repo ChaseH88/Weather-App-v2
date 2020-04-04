@@ -50,7 +50,6 @@ const DrawerComponent: FC<DrawerProps> = ({ styles }): JSX.Element => {
           ))}
         </div>
       </div>
-
     </Drawer>
   );
 }

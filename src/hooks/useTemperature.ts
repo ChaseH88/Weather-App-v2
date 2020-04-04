@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { State } from "state";
-import { Temperatures } from "../state/reducer";
+import { Temperatures } from "../types";
 import { UPDATE_TEMP_MEASUREMENT } from "../state/types";
 
 /**

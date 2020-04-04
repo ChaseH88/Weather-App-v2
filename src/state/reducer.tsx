@@ -1,14 +1,7 @@
 import * as types from "./types";
 
-enum Units {
-  imperial = 'imperial',
-  metric = 'metric'
-}
-
-export enum Temperatures {
-  fahrenheit = 'fahrenheit',
-  celsius = 'celsius'
-}
+// Typescript
+import { Units, Temperatures } from "../types";
 
 interface AppState {
   app: {
