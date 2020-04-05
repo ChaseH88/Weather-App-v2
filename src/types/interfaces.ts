@@ -1,3 +1,35 @@
+import * as enums from "./enums";
+
+/**
+ * The main typing for the App State.
+ * Includes information used across the app including
+ * things like app variables, settings, location data,
+ * and several different weather details that make up
+ * the app's UI.
+ */
+export interface AppState {
+  app: {
+    loading?: boolean,
+    menuOpen?: boolean
+  }
+  settings: {
+    units?: enums.Units,
+    temperature?: enums.Temperatures,
+    darkMode?: boolean
+  }
+  location: {
+    coordinates?: object,
+    fullLocation?: string | null,
+    zipcode?: number | null
+  },
+  weatherDetails: {
+    currentWeather?: object | null,
+    dailyForecast?: object | null,
+    severeAlerts?: object | null,
+    severeAlertsCount?: number
+  }
+}
+
 export interface DailyForecast {
   city_name: string
   lon: number
@@ -114,4 +146,19 @@ export interface SevereAlerts {
   }[]      
   city_name: string,
   state_code: string
+}
+
+export interface LocationData {
+  lat?: number
+  lon?: number
+  search?: string
+}
+
+export interface ApiResponse {
+  data: any,
+  status: number,
+  statusText: string,
+  headers: object,
+  config: object,
+  request: XMLHttpRequest,
 }

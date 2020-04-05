@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { State } from "state";
-import { Temperatures } from "@types";
+import { Temperatures } from "Types/enums";
 import { UPDATE_TEMP_MEASUREMENT } from "state/types";
 
 /**
  * The hook will render a temperature in fahrenheit or celsius.
  * This also gives you a function to swap the two measurement systems.
+ * Note: You must pass a number. If you only need the toggle function, 
+ * you can simply just pass a 0 into the hook and extract the function.
  * @param number Accepts the temperate
- * @returns {[number, Function]}
+ * @returns {[number, Function]} {[temperature: number, toggleTempType: Function]}
  */
 const useTemperature = (number: number): [number, Function] => {
 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { State } from "state";
-import { DailyForecast } from "../_types";
+import { DailyForecast } from "Types/interfaces";
 
 const useDailyForecast = (): DailyForecast | null => {
 

@@ -2,12 +2,11 @@ import { getLocation } from "utilities/get-location";
 import WeatherBitAPI from "classes/WeatherBitAPI";
 import App from "classes/App";
 import MapBoxAPI from "classes/MapBoxAPI";
-import Storage, { AppKeys } from "classes/Storage";
+import Storage from "classes/Storage";
 
-interface Location {
-  lat: number,
-  lon: number
-}
+// Types
+import { LocationData } from "Types/interfaces";
+import { AppKeys } from "Types/enums";
 
 /**
  * Toggle dark mode setting
@@ -70,7 +69,7 @@ export const findUserLocation = async (): Promise<void> => {
   app.startLoading();
 
   // Grab the user location and update
-  let { lon, lat }: Location = await getLocation();
+  let { lon, lat }: LocationData = await getLocation();
 
   // Add Location to Storage
   const storage = new Storage();

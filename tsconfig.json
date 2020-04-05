@@ -16,7 +16,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "paths": {
-      "@types": ["./types"],
+      "Types": ["./types/*"],
       "classes/*": ["./classes/*"],
       "components/*": ["./components/*"],
       "hooks": ["./hooks"],

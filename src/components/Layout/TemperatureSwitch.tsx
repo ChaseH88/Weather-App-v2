@@ -3,7 +3,7 @@ import Switch from '@material-ui/core/Switch';
 import { useSettings, useTemperature } from "hooks";
 
 // Typescript
-import { Temperatures } from "@types";
+import { Temperatures } from "Types/enums";
 
 const TemperatureSwitch: FC = (): JSX.Element => {
 

@@ -1,30 +1,11 @@
 import * as types from "./types";
 
-// Typescript
-import { Units, Temperatures } from "@types";
-
-interface AppState {
-  app: {
-    loading?: boolean,
-    menuOpen?: boolean
-  }
-  settings: {
-    units?: Units,
-    temperature?: Temperatures,
-    darkMode?: boolean
-  }
-  location: {
-    coordinates?: object,
-    fullLocation?: string | null,
-    zipcode?: number | null
-  },
-  weatherDetails: {
-    currentWeather?: object | null,
-    dailyForecast?: object | null,
-    severeAlerts?: object | null,
-    severeAlertsCount?: number
-  }
-}
+// Types
+import { AppState } from "Types/interfaces";
+import {
+  Units,
+  Temperatures
+} from "Types/enums";
 
 /**
  * App Debug Mode

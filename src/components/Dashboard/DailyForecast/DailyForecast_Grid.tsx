@@ -4,7 +4,7 @@ import { key } from "utilities/key";
 import moment from "moment";
 import WeatherIcon from "components/General/WeatherIcon";
 import Temperature from "components/General/Temperature";
-import { DailyForecast } from "../../../_types";
+import { DailyForecast } from "Types/interfaces";
 
 type ForecastProps = {
   data: DailyForecast

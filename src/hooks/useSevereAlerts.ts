@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { State } from "state";
-import { SevereAlerts } from "../_types";
+import { SevereAlerts } from "Types/interfaces";
 
 type UseSevereAlerts = [SevereAlerts, number];
 

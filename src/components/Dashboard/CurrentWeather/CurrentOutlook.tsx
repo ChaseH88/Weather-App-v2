@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { CurrentWeather } from "../../../_types";
+import { CurrentWeather } from "Types/interfaces";
 import WeatherIcon from "components/General/WeatherIcon";
 import Temperature from "components/General/Temperature";
 import "styles/current-forecast.scss";

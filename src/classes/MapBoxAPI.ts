@@ -1,21 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import * as types from "state/types";
 import Dispatch from "./Dispatch";
-
-interface LocationData {
-  lat?: number
-  lon?: number
-  search?: string
-}
-
-interface ApiResponse {
-  data: any,
-  status: number,
-  statusText: string,
-  headers: object,
-  config: object,
-  request: XMLHttpRequest,
-}
+import { LocationData, ApiResponse } from "Types/interfaces";
 
 type MapBoxKey = string;
 

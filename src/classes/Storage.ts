@@ -1,8 +1,4 @@
-export enum AppKeys {
-  search_history = 'search_history',
-  coordinates = 'coordinates',
-  dark_mode = 'dark_mode'
-}
+import { AppKeys } from "Types/enums";
 
 class Storage {
   

@@ -1,24 +1,12 @@
 import axios, { AxiosInstance } from "axios";
+import Dispatch from "./Dispatch";
 import {
+  ApiResponse,
+  LocationData,
   CurrentWeather,
   DailyForecast,
   SevereAlerts
-} from "../_types";
-import Dispatch from "./Dispatch";
-
-export interface LocationData {
-  lat?: number
-  lon?: number
-}
-
-interface ApiResponse {
-  data: object,
-  status: number,
-  statusText: string,
-  headers: object,
-  config: object,
-  request: XMLHttpRequest,
-}
+} from "Types/interfaces";
 
 type WeatherbitKey = string;
 type QueryString = string;

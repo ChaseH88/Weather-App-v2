@@ -1,12 +1,14 @@
-import { Temperatures } from "@types";
 import * as types from "state/types";
 import Dispatch from "./Dispatch";
-import { LocationData } from "./WeatherBitAPI";
+
+// Types
+import { Temperatures } from "Types/enums";
 import {
     DailyForecast,
     SevereAlerts,
-    CurrentWeather
-} from "../_types";
+    CurrentWeather,
+    LocationData
+} from "Types/interfaces";
 
 
 class App extends Dispatch {

@@ -70,7 +70,7 @@ module.exports = {
       'state': resolve(__dirname, '../src/state'),
       'styles': resolve(__dirname, '../src/styles'),
       'utilities': resolve(__dirname, '../src/utilities'),
-      '@types': resolve(__dirname, '../src/types'),
+      'Types': resolve(__dirname, '../src/types'),
     }
   },
   output: {
