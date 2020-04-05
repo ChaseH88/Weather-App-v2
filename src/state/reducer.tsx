@@ -30,7 +30,8 @@ export const initialState: AppState = {
   },
   location: {
     coordinates: {},
-    fullLocation: null
+    fullLocation: null,
+    lastUpdated: null
   },
   weatherDetails: {
     currentWeather: debugMode ? testFile('current-weather') : null,
@@ -79,7 +80,8 @@ export const reducer = (state: AppState, { type, payload }: Action): AppState =>
         ...state,
         location: {
           ...state.location,
-          coordinates: payload
+          coordinates: payload,
+          lastUpdated: new Date()
         },
         app: {
           ...state.app

@@ -20,3 +20,4 @@ export const CLEAR: ContextType = '@location/clear';
 export const UPDATE_COORDINATES: ContextType = '@location/update';
 export const SET_ZIPCODE: ContextType = '@location/zipcode_update';
 export const SET_FULL_LOCATION: ContextType = '@location/full_location_update';
+export const SET_LAST_UPDATED: ContextType = '@location/last-updated';

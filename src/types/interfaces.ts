@@ -20,7 +20,8 @@ export interface AppState {
   location: {
     coordinates?: object,
     fullLocation?: string | null,
-    zipcode?: number | null
+    zipcode?: number | null,
+    lastUpdated?: null | Date
   },
   weatherDetails: {
     currentWeather?: object | null,
