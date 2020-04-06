@@ -6,3 +6,4 @@ export * from "./useSevereAlerts";
 export * from "./useSettings";
 export * from "./useTemperature";
 export * from "./useDrawer";
+export * from "./useLineChart";
