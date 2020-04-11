@@ -128,25 +128,26 @@ export interface CurrentWeather {
     app_temp: number
 }
 
-
 export interface SevereAlerts {
   country_code: string,
   lon: number,
   timezone: string,
   lat: number,
-  alerts: {
-    regions: string[],
-    expires_utc: Date,
-    effective_local: Date
-    uri: string,
-    description: string,
-    effective_utc: Date,
-    severity: string,
-    title: string,
-    expires_local: Date
-  }[]      
+  alerts: Alert[]      
   city_name: string,
   state_code: string
+}
+
+export interface Alert {
+  regions: string[],
+  expires_utc: Date,
+  effective_local: Date
+  uri: string,
+  description: string,
+  effective_utc: Date,
+  severity: string,
+  title: string,
+  expires_local: Date
 }
 
 export interface LocationData {

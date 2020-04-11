@@ -11,14 +11,20 @@ const TemperatureSwitch: FC = (): JSX.Element => {
   const [, toggleTemp] = useTemperature(0);
 
   return (
-    <Switch
-        checked={temperature === Temperatures.fahrenheit}
+    <div>
+      <span
+        className={'temp-switch'}
         onClick={() => toggleTemp()}
-        color="default"
-        inputProps={{
-            'aria-label': temperature
-        }}
-    />
+      >{temperature}</span>
+      <Switch
+          checked={temperature === Temperatures.fahrenheit}
+          onClick={() => toggleTemp()}
+          color="default"
+          inputProps={{
+              'aria-label': temperature
+          }}
+      />
+    </div>
   );
 }
 

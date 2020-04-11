@@ -1,29 +1,39 @@
 {
     "country_code": "US",
-    "lon": -87.91,
+    "lon": -102.52,
     "timezone": "America/Chicago",
-    "lat": 30.65,
+    "lat": 31.45,
     "alerts": [{
-        "regions": ["Baldwin Coastal", " Okaloosa Coastal", " Escambia Coastal", " Santa Rosa Coastal", " Mobile Coastal"],
-        "expires_utc": "2020-03-30T16:00:00",
-        "effective_local": "2020-03-29T17:07:00",
-        "uri": "https://api.weather.gov/alerts/NWS-IDP-PROD-4125562-3496797",
-        "description": "* WHAT...Dangerous rip currents are expected.\n\n* WHERE...In Alabama, Baldwin Coastal and Mobile Coastal\nCounties. In Florida, Santa Rosa Coastal, Okaloosa Coastal and\nEscambia Coastal Counties.\n\n* WHEN...Now through late tonight.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
-        "effective_utc": "2020-03-29T22:07:00",
+        "regions": ["Crane"],
+        "expires_utc": "2020-04-11T04:00:00",
+        "effective_local": "2020-04-10T22:34:00",
+        "uri": "https://api.weather.gov/alerts/NWS-IDP-PROD-4148536",
+        "description": "At 534 PM CDT, Doppler radar was tracking a strong thunderstorm 16\nmiles west of Crane, moving northeast at 30 mph.\n\nPenny size hail and wind gusts up to 50 mph will be possible with\nthis storm.\n\nThis storm will remain over mainly rural areas of northern Crane\nCounty.\n\nA Severe Thunderstorm Watch remains in effect until 1000 PM CDT for\nwestern Texas.",
+        "effective_utc": "2020-04-11T03:34:00",
         "severity": "Watch",
-        "title": "Rip Current Statement issued March 29 at 12:07PM CDT until March 30 at 6:00AM CDT by NWS Mobile AL",
-        "expires_local": "2020-03-30T11:00:00"
-    },{
-        "regions": ["Baldwin Coastal", " Okaloosa Coastal", " Escambia Coastal", " Santa Rosa Coastal", " Mobile Coastal"],
-        "expires_utc": "2020-03-30T16:00:00",
-        "effective_local": "2020-03-29T17:07:00",
-        "uri": "https://api.weather.gov/alerts/NWS-IDP-PROD-4125562-3496797",
-        "description": "* WHAT...Dangerous rip currents are expected.\n\n* WHERE...In Alabama, Baldwin Coastal and Mobile Coastal\nCounties. In Florida, Santa Rosa Coastal, Okaloosa Coastal and\nEscambia Coastal Counties.\n\n* WHEN...Now through late tonight.\n\n* IMPACTS...Rip currents can sweep even the best swimmers away\nfrom shore into deeper water.",
-        "effective_utc": "2020-03-29T22:07:00",
-        "severity": "Watch",
-        "title": "Rip Current Statement issued March 29 at 12:07PM CDT until March 30 at 6:00AM CDT by NWS Mobile AL",
-        "expires_local": "2020-03-30T11:00:00"
+        "title": "Special Weather Statement issued April 10 at 5:34PM CDT by NWS Midland/Odessa TX",
+        "expires_local": "2020-04-10T23:00:00"
+    }, {
+        "regions": ["Pecos, TX", " Crane, TX"],
+        "expires_utc": "2020-04-11T04:00:00",
+        "effective_local": "2020-04-10T22:31:00",
+        "uri": "https://api.weather.gov/alerts/NWS-IDP-PROD-4148535-3513402",
+        "description": "At 531 PM CDT, a severe thunderstorm was located 17 miles southeast\nof Grandfalls, or 21 miles southwest of Crane, moving east northeast\nat 20 mph.\n\nHAZARD...Golf ball size hail and 60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...People and animals outdoors will be injured. Expect hail\ndamage to roofs, siding, windows, and vehicles. Expect wind\ndamage to roofs, siding, and trees.\n\nLocations impacted include...\nCordona Lake and Imperial.",
+        "effective_utc": "2020-04-11T03:31:00",
+        "severity": "Warning",
+        "title": "Severe Thunderstorm Warning issued April 10 at 5:31PM CDT until April 10 at 6:00PM CDT by NWS Midland/Odessa TX",
+        "expires_local": "2020-04-10T23:00:00"
+    }, {
+        "regions": ["Ward, TX", " Reagan, TX", " Pecos, TX", " Upton, TX", " Reeves, TX", " Terrell, TX", " Crane, TX", " Jeff Davis, TX", " Brewster, TX"],
+        "expires_utc": "2020-04-11T08:00:00",
+        "effective_local": "2020-04-10T20:42:00",
+        "uri": "https://api.weather.gov/alerts/NWS-IDP-PROD-4148398-3513297",
+        "description": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n99 IN EFFECT UNTIL 10 PM CDT THIS EVENING FOR THE FOLLOWING AREAS\n\nIN TEXAS THIS WATCH INCLUDES 9 COUNTIES\n\nIN SOUTHWEST TEXAS\n\nBREWSTER              JEFF DAVIS            PECOS\nREEVES                TERRELL\n\nIN WESTERN TEXAS\n\nCRANE                 REAGAN                UPTON\nWARD\n\nTHIS INCLUDES THE CITIES OF ALPINE, BIG LAKE, CRANE, DRYDEN,\nFORT DAVIS, FORT STOCKTON, MCCAMEY, MONAHANS, PECOS, RANKIN,\nAND SANDERSON.",
+        "effective_utc": "2020-04-11T01:42:00",
+        "severity": "Warning",
+        "title": "Severe Thunderstorm Watch issued April 10 at 3:42PM CDT until April 10 at 10:00PM CDT by NWS Midland/Odessa TX",
+        "expires_local": "2020-04-11T03:00:00"
     }],
-    "city_name": "Spanish Fort",
-    "state_code": "AL"
+    "city_name": "Crane",
+    "state_code": "TX"
 }

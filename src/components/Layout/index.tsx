@@ -14,6 +14,7 @@ import Drawer from "./Drawer";
 import DailyForecast from "components/Dashboard/DailyForecast";
 import CurrentWeather from "components/Dashboard/CurrentWeather";
 import SevereAlerts from "components/Dashboard/SevereAlerts";
+import AlertBar from "components/Dashboard/AlertBar";
 
 // Styles
 import { useStyles } from "./Dashboard_Styles";
@@ -36,6 +37,7 @@ const Dashboard: FC = (): JSX.Element => {
       />
       <Drawer styles={classes} />
       <main className={classes.content}>
+        <AlertBar />
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>

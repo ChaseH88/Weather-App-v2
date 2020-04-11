@@ -40,7 +40,10 @@ const DrawerComponent: FC<DrawerProps> = ({ styles }): JSX.Element => {
         </div>
         <div className="alerts">
           {data.alerts.map(alert => (
-            <div className={alert.severity.toLowerCase()}>
+            <div
+              key={alert.uri}
+              className={alert.severity.toLowerCase()}
+            >
               <List>
                 <h3>{alert.title}</h3>
                 <p>{alert.description}</p>
