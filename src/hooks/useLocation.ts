@@ -1,19 +1,13 @@
 import { useContext } from "react";
 import { State } from "state";
+import { LocationState } from "Types/interfaces";
 
-interface UseLocation {
-  coordinates?: {
-    lat: number, 
-    lon: number
-  }
-}
-
-const useLocation = (): UseLocation => {
+const useLocation = (): LocationState => {
 
   // Grab the daily forecast data
   const [ { location }] = useContext(State);
 
-  return location;
+  return location as LocationState;
   
 };
 

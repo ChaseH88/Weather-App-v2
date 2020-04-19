@@ -1,17 +1,14 @@
 import { useContext } from "react";
 import { State } from "state";
+import { AppState } from "Types/interfaces";
 
-interface UseApp {
-  loading?: boolean,
-  menuOpen: boolean
-}
 
-const useApp = (): UseApp => {
+const useApp = (): AppState => {
 
   // Grab the daily forecast data
   const [ { app }] = useContext(State);
 
-  return app as UseApp;
+  return app as AppState;
   
 };
 

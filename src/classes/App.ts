@@ -7,7 +7,8 @@ import {
     DailyForecast,
     SevereAlerts,
     CurrentWeather,
-    LocationData
+    LocationData,
+    Modal
 } from "Types/interfaces";
 
 
@@ -68,6 +69,43 @@ class App extends Dispatch {
     this.dispatch({
       type: types.UPDATE_TEMP_MEASUREMENT,
       payload: measurement
+    });
+
+  }
+
+  /**
+   * Sets the modal data to state
+   * @param {Modal} - The Modal Date
+   */
+  public setModalData(data: Modal | null): void {
+    
+    this.dispatch({
+      type: types.SET_MODAL_DATA,
+      payload: data
+    });
+
+  }
+
+  /**
+   * Show the modal
+   */
+  public showModal(): void {
+    
+    this.dispatch({
+      type: types.MODAL_TOGGLE,
+      payload: true
+    });
+
+  }
+
+  /**
+   * Hide the modal
+   */
+  public hideModal(): void {
+    
+    this.dispatch({
+      type: types.MODAL_TOGGLE,
+      payload: false
     });
 
   }

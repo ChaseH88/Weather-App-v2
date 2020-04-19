@@ -1,4 +1,5 @@
 import * as enums from "./enums";
+import { ReactComponentElement } from "react";
 
 /**
  * The main typing for the App State.
@@ -7,28 +8,41 @@ import * as enums from "./enums";
  * and several different weather details that make up
  * the app's UI.
  */
+export interface MainAppState {
+  app: AppState,
+  settings: SettingsState,
+  location: LocationState,
+  weatherDetails: WeatherDetailsState
+}
+
 export interface AppState {
-  app: {
-    loading?: boolean,
-    menuOpen?: boolean
-  }
-  settings: {
-    units?: enums.Units,
-    temperature?: enums.Temperatures,
-    darkMode?: boolean
-  }
-  location: {
-    coordinates?: object,
-    fullLocation?: string | null,
-    zipcode?: number | null,
-    lastUpdated?: null | Date
+  loading?: boolean,
+  menuOpen?: boolean,
+  modal?: boolean,
+  modalData?: Modal | null
+}
+
+export interface SettingsState {
+  units?: enums.Units,
+  temperature?: enums.Temperatures,
+  darkMode?: boolean
+}
+
+export interface LocationState {
+  coordinates?: {
+    lat?: number, 
+    lon?: number
   },
-  weatherDetails: {
-    currentWeather?: object | null,
-    dailyForecast?: object | null,
-    severeAlerts?: object | null,
-    severeAlertsCount?: number
-  }
+  fullLocation?: string | null,
+  zipcode?: number | null,
+  lastUpdated?: null | Date
+}
+
+export interface WeatherDetailsState {
+  currentWeather?: CurrentWeather | null,
+  dailyForecast?: DailyForecast | null,
+  severeAlerts?: SevereAlerts | null,
+  severeAlertsCount?: number
 }
 
 export interface DailyForecast {
@@ -163,4 +177,10 @@ export interface ApiResponse {
   headers: object,
   config: object,
   request: XMLHttpRequest,
+}
+
+export interface Modal {
+  heading?: string,
+  text?: string,
+  component: ReactComponentElement<any>
 }

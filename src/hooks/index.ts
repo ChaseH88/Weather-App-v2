@@ -7,3 +7,4 @@ export * from "./useSettings";
 export * from "./useTemperature";
 export * from "./useDrawer";
 export * from "./useLineChart";
+export * from "./useModal";

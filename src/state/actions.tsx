@@ -5,7 +5,7 @@ import MapBoxAPI from "classes/MapBoxAPI";
 import Storage from "classes/Storage";
 
 // Types
-import { LocationData } from "Types/interfaces";
+import { LocationData, Modal } from "Types/interfaces";
 import { AppKeys } from "Types/enums";
 
 /**
@@ -20,6 +20,29 @@ export const darkModeToggle = (on: boolean): void => {
 
   const app = new App();
   app.darkMode(on);
+  
+}
+
+/**
+ * Add content to the modal and show it
+ * @param {Modal} data - the modal data
+ */
+export const setModal = (data: Modal): void => {
+
+  const app = new App();
+  app.setModalData(data);
+  app.showModal();
+  
+}
+
+/**
+ * Clear and hide the modal
+ */
+export const clearModal = (): void => {
+
+  const app = new App();
+  app.setModalData(null);
+  app.hideModal();
   
 }
 

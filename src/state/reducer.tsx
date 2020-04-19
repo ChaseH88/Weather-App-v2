@@ -1,7 +1,7 @@
 import * as types from "./types";
 
 // Types
-import { AppState } from "Types/interfaces";
+import { MainAppState } from "Types/interfaces";
 import {
   Units,
   Temperatures
@@ -18,10 +18,12 @@ const testFile = (name: string) => (
 /**
  * The default app state
  */
-export const initialState: AppState = {
+export const initialState: MainAppState = {
   app: {
     loading: false,
-    menuOpen: false
+    menuOpen: false,
+    modal: false,
+    modalData: null
   },
   settings: {
     units: Units.imperial,
@@ -51,7 +53,7 @@ interface Action {
  * @param state - The main app state
  * @param {Action} - Includes the action name and payload
  */
-export const reducer = (state: AppState, { type, payload }: Action): AppState => {
+export const reducer = (state: MainAppState, { type, payload }: Action): MainAppState => {
   switch (type) {
 
     // --- Set Global Loading ---
@@ -71,6 +73,26 @@ export const reducer = (state: AppState, { type, payload }: Action): AppState =>
         app: {
           ...state.app,
           menuOpen: payload
+        }
+      }
+
+    // --- Set Modal ---
+    case types.MODAL_TOGGLE: 
+      return {
+        ...state,
+        app: {
+          ...state.app,
+          modal: payload
+        }
+      }
+
+    // --- Set Modal ---
+    case types.SET_MODAL_DATA: 
+      return {
+        ...state,
+        app: {
+          ...state.app,
+          modalData: payload
         }
       }
 

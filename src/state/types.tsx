@@ -4,6 +4,10 @@ export type ContextType = string;
 export const LOADING: ContextType = '@app/loading';
 export const MENU_TOGGLE: ContextType = '@app/menu';
 
+// Modal
+export const MODAL_TOGGLE: ContextType = '@modal/toggle';
+export const SET_MODAL_DATA: ContextType = '@modal/set-data';
+
 // Settings
 export const UPDATE_UNITS: ContextType = '@settings/units';
 export const DARK_MODE: ContextType = '@settings/toggle-dark-mode';

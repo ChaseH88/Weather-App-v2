@@ -1,21 +1,14 @@
 import { useContext } from "react";
 import { State } from "state";
+import { SettingsState } from "Types/interfaces";
 
-// Typescript
-import { Temperatures } from "Types/enums";
 
-interface UseSettings {
-  units: string,
-  darkMode: boolean,
-  temperature: Temperatures
-}
-
-const useSettings = (): UseSettings => {
+const useSettings = (): SettingsState => {
 
   // Grab the daily forecast data
   const [ { settings }] = useContext(State);
 
-  return settings as UseSettings;
+  return settings as SettingsState;
   
 };
 
